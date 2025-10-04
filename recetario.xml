@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="recetario.xsl"?>
+<recetario xmlns="http://www.recetas.com"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.recetas.com recetario.xsd">
+    <!-- Receta 1-->
+    <receta id="r001" categoria="Postre" dificultad="Media">
+        <nombre>Pastel de Chocolate</nombre>
+        <descripcion>Delicioso pastel de chocolate esponjoso y húmedo.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="200" unidad="g">Harina</ingrediente>
+            <ingrediente cantidad="100" unidad="g">Cacao en polvo</ingrediente>
+            <ingrediente cantidad="150" unidad="g">Azúcar</ingrediente>
+            <ingrediente cantidad="3" unidad="u">Huevos</ingrediente>
+            <ingrediente cantidad="100" unidad="ml">Leche</ingrediente>
+            <ingrediente cantidad="100" unidad="g">Mantequilla</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Precalentar el horno a 180°C.</paso>
+            <paso orden="2">Mezclar los ingredientes secos.</paso>
+            <paso orden="3">Añadir los ingredientes líquidos y mezclar bien.</paso>
+            <paso orden="4">Verter la mezcla en un molde engrasado.</paso>
+            <paso orden="5">Hornear durante 30 minutos.</paso>
+        </preparacion>
+        <tiempo total="60" unidad="minutos"/>
+        <porciones cantidad="8"/>
+        <video url="https://www.youtube.com/watch?v=abcd1234"/>
+        <enlace url="https://www.recetas.com/pastel-de-chocolate"/>
+        <notas>Se puede decorar con frutas o crema batida.</notas>
+    </receta>
+
+    <!-- Receta 2-->
+    <receta id="r002" categoria="Entrada" dificultad="Baja">
+        <nombre>Ensalada César</nombre>
+        <descripcion>Clásica ensalada con lechuga, pollo y aderezo César.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="200" unidad="g">Pechuga de pollo</ingrediente>
+            <ingrediente cantidad="150" unidad="g">Lechuga romana</ingrediente>
+            <ingrediente cantidad="50" unidad="g">Queso parmesano</ingrediente>
+            <ingrediente cantidad="50" unidad="g">Crutones</ingrediente>
+            <ingrediente cantidad="100" unidad="ml">Aderezo César</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Cocinar la pechuga de pollo y cortarla en tiras.</paso>
+            <paso orden="2">Lavar y cortar la lechuga.</paso>
+            <paso orden="3">Mezclar todos los ingredientes en un bol.</paso>
+            <paso orden="4">Añadir el aderezo y mezclar bien.</paso>
+        </preparacion>
+        <tiempo total="20" unidad="minutos"/>
+        <porciones cantidad="4"/>
+        <video url="https://www.youtube.com/watch?v=efgh5678"/>
+        <enlace url="https://www.recetas.com/ensalada-cesar"/>
+        <notas>Se puede añadir pollo a la parrilla para más sabor.</notas>
+    </receta>
+
+    <!-- Receta 3-->
+    <receta id="r003" categoria="Plato Principal" dificultad="Alta">
+        <nombre>Paella Valenciana</nombre>
+        <descripcion>Tradicional paella con mariscos y arroz.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="500" unidad="g">Arroz</ingrediente>
+            <ingrediente cantidad="200" unidad="g">Mariscos surtidos</ingrediente>
+            <ingrediente cantidad="100" unidad="g">Guisantes</ingrediente>
+            <ingrediente cantidad="1" unidad="u">Pimiento rojo</ingrediente>
+            <ingrediente cantidad="2" unidad="u">Tomates</ingrediente>
+            <ingrediente cantidad="1" unidad="u">Cebolla</ingrediente>
+            <ingrediente cantidad="1" unidad="u">Diente de ajo</ingrediente>
+            <ingrediente cantidad="1" unidad="l">Caldo de pescado</ingrediente>
+            <ingrediente cantidad="1" unidad="cucharadita">Azafrán</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Sofreír la cebolla, ajo y pimiento.</paso>
+            <paso orden="2">Añadir los tomates y cocinar hasta que estén blandos.</paso>
+            <paso orden="3">Incorporar los mariscos y el arroz.</paso>
+            <paso orden="4">Verter el caldo caliente y añadir el azafrán.</paso>
+            <paso orden="5">Cocinar a fuego medio hasta que el arroz esté en su punto.</paso>
+        </preparacion>
+        <tiempo total="90" unidad="minutos"/>
+        <porciones cantidad="6"/>
+        <video url="https://www.youtube.com/watch?v=ijkl9012"/>
+        <enlace url="https://www.recetas.com/paella-valenciana"/>
+        <notas>Es importante no remover el arroz durante la cocción.</notas>
+    </receta>
+
+    <!-- Receta 4-->
+    <receta id="r004" categoria="Postre" dificultad="Baja">
+        <nombre>Flan Casero</nombre>
+        <descripcion>Flan suave y cremoso con caramelo.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="500" unidad="ml">Leche</ingrediente>
+            <ingrediente cantidad="100" unidad="g">Azúcar</ingrediente>
+            <ingrediente cantidad="4" unidad="u">Huevos</ingrediente>
+            <ingrediente cantidad="1" unidad="cucharadita">Esencia de vainilla</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Caramelizar el azúcar en un molde apto para horno.</paso>
+            <paso orden="2">Batir los huevos con el azúcar y la esencia de vainilla.</paso>
+            <paso orden="3">Añadir la leche caliente a la mezcla de huevos.</paso>
+            <paso orden="4">Verter la mezcla en el molde caramelizado.</paso>
+            <paso orden="5">Cocinar al baño maría en el horno durante 45 minutos.</paso>
+        </preparacion>
+        <tiempo total="60" unidad="minutos"/>
+        <porciones cantidad="6"/>
+        <video url="https://www.youtube.com/watch?v=mnop3456"/>
+        <enlace url="https://www.recetas.com/flan-casero"/>
+        <notas>Dejar enfriar completamente antes de desmoldar.</notas>
+    </receta>
+
+    <!-- Receta 5-->
+    <receta id="r005" categoria="Bebida" dificultad="Baja">
+        <nombre>Batido de Fresas</nombre>
+        <descripcion>Refrescante batido de fresas con leche.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="200" unidad="g">Fresas</ingrediente>
+            <ingrediente cantidad="250" unidad="ml">Leche</ingrediente>
+            <ingrediente cantidad="2" unidad="cucharadas">Azúcar</ingrediente>
+            <ingrediente cantidad="1" unidad="cucharadita">Esencia de vainilla</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Lavar y desinfectar las fresas.</paso>
+            <paso orden="2">Colocar las fresas, leche, azúcar y esencia de vainilla en una licuadora.</paso>
+            <paso orden="3">Licuar hasta obtener una mezcla homogénea.</paso>
+            <paso orden="4">Servir en vasos altos con hielo al gusto.</paso>
+        </preparacion>
+        <tiempo total="10" unidad="minutos"/>
+        <porciones cantidad="2"/>
+        <video url="https://www.youtube.com/watch?v=qrst5678"/>
+        <enlace url="https://www.recetas.com/batido-de-fresas"/>
+        <notas>Se puede añadir un poco de crema batida por encima.</notas>
+    </receta>
+</recetario>
