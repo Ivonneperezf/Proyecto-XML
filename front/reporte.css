@@ -1,0 +1,378 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #1a1a2e, #16213e);
+    color: #e0e0e0;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    background: rgba(20, 20, 40, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 2rem;
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-icon {
+    width: 35px;
+    height: 35px;
+    color: #8b9aff;
+}
+
+.logo h1 {
+    color: #ffffff;
+    font-size: 1.4rem;
+}
+
+.nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #a0a0b0;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #ffffff;
+}
+
+/* Main Content */
+.main-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.page-header h2 {
+    font-size: 2.2rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1rem;
+    color: #a0a0b0;
+}
+
+/* Stats Grid - Tarjetas de estadísticas */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.stat-card {
+    background: rgba(30, 30, 50, 0.5);
+    border: 1px solid rgba(139, 154, 255, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(139, 154, 255, 0.5);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    background: rgba(139, 154, 255, 0.2);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-info h3 {
+    font-size: 0.9rem;
+    color: #b0b0c0;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* Report Sections */
+.report-section {
+    background: rgba(30, 30, 50, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid rgba(139, 154, 255, 0.3);
+}
+
+/* Tables */
+.table-container {
+    overflow-x: auto;
+}
+
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.report-table thead {
+    background: rgba(20, 20, 35, 0.7);
+}
+
+.report-table th {
+    padding: 1rem;
+    text-align: left;
+    color: #8b9aff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid rgba(139, 154, 255, 0.3);
+}
+
+.report-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+}
+
+.report-table tbody tr:hover {
+    background: rgba(139, 154, 255, 0.1);
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(20, 20, 35, 0.7);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 10px;
+    transition: width 0.3s;
+}
+
+.progress-success {
+    background: linear-gradient(90deg, #43e97b, #38f9d7);
+}
+
+.progress-warning {
+    background: linear-gradient(90deg, #fa709a, #fee140);
+}
+
+.progress-danger {
+    background: linear-gradient(90deg, #f5576c, #f093fb);
+}
+
+/* Badges */
+.badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.badge-info {
+    background: rgba(79, 172, 254, 0.2);
+    color: #4facfe;
+    border: 1px solid rgba(79, 172, 254, 0.3);
+}
+
+.badge-success {
+    background: rgba(67, 233, 123, 0.2);
+    color: #43e97b;
+    border: 1px solid rgba(67, 233, 123, 0.3);
+}
+
+.badge-warning {
+    background: rgba(250, 112, 154, 0.2);
+    color: #fa709a;
+    border: 1px solid rgba(250, 112, 154, 0.3);
+}
+
+.badge-danger {
+    background: rgba(245, 87, 108, 0.2);
+    color: #f5576c;
+    border: 1px solid rgba(245, 87, 108, 0.3);
+}
+
+/* Recetas List */
+.recetas-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.receta-card {
+    background: rgba(20, 20, 35, 0.5);
+    border: 1px solid rgba(139, 154, 255, 0.2);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.receta-card:hover {
+    transform: translateX(5px);
+    border-color: rgba(139, 154, 255, 0.4);
+}
+
+.receta-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.receta-header h4 {
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+.receta-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.detail-label {
+    font-size: 0.85rem;
+    color: #b0b0c0;
+}
+
+.detail-item span:last-child {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Export Section */
+.export-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    transition: all 0.2s;
+    font-weight: 600;
+}
+
+.btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .main-content {
+        padding: 1.5rem 1rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .report-section {
+        padding: 1.5rem;
+    }
+
+    .report-table {
+        font-size: 0.85rem;
+    }
+
+    .report-table th,
+    .report-table td {
+        padding: 0.8rem 0.5rem;
+    }
+
+    .receta-details {
+        grid-template-columns: 1fr 1fr;
+    }
+}

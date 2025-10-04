@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte - Recetario Digital</title>
+    <link rel="stylesheet" href="reporte.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+                </svg>
+                <h1>Recetario Digital</h1>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="insertar.html" class="nav-link">Insertar</a>
+                <a href="bajas.html" class="nav-link">Eliminar</a>
+                <a href="cambios.html" class="nav-link">Editar</a>
+                <a href="consultas.html" class="nav-link">Consultar</a>
+                <a href="reporte.html" class="nav-link active">Reporte</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h2>📊 Reporte General</h2>
+            <p>Estadísticas y análisis del recetario</p>
+        </div>
+
+        <!-- Cards para representar las estadsísticas -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📝</div>
+                <div class="stat-info">
+                    <h3>Total Recetas</h3>
+                    <p class="stat-number" id="totalRecetas">5</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">⏱️</div>
+                <div class="stat-info">
+                    <h3>Tiempo Promedio</h3>
+                    <p class="stat-number" id="tiempoPromedio">48 min</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🍽️</div>
+                <div class="stat-info">
+                    <h3>Porciones Totales</h3>
+                    <p class="stat-number" id="porcionesTotales">26</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-info">
+                    <h3>Más Común</h3>
+                    <p class="stat-number" id="categoriaComun">Postre</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de reportes por categoría -->
+        <div class="report-section">
+            <h3 class="section-title">Recetas por Categoría</h3>
+            <div class="table-container">
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Cantidad</th>
+                            <th>Porcentaje</th>
+                            <th>Gráfico</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaCategorias">
+                        <tr>
+                            <td>Postre</td>
+                            <td>2</td>
+                            <td>40%</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 40%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Entrada</td>
+                            <td>1</td>
+                            <td>20%</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 20%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Plato Principal</td>
+                            <td>1</td>
+                            <td>20%</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 20%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Bebida</td>
+                            <td>1</td>
+                            <td>20%</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 20%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Sección de dificultad -->
+        <div class="report-section">
+            <h3 class="section-title">Recetas por Dificultad</h3>
+            <div class="table-container">
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>Dificultad</th>
+                            <th>Cantidad</th>
+                            <th>Porcentaje</th>
+                            <th>Gráfico</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaDificultad">
+                        <tr>
+                            <td>
+                                <span class="badge badge-success">Baja</span>
+                            </td>
+                            <td>3</td>
+                            <td>60%</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill progress-success" style="width: 60%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="badge badge-warning">Media</span>
+                            </td>
+                            <td>1</td>
+                            <td>20%</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill progress-warning" style="width: 20%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="badge badge-danger">Alta</span>
+                            </td>
+                            <td>1</td>
+                            <td>20%</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill progress-danger" style="width: 20%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Lista "detallada" de recetas -->
+        <div class="report-section">
+            <h3 class="section-title">Lista Completa de Recetas</h3>
+            <div class="recetas-list" id="listaRecetas">
+                <!-- Recetaas ejemplos -->
+                <div class="receta-card">
+                    <div class="receta-header">
+                        <h4>Pastel de Chocolate</h4>
+                        <span class="badge badge-info">Postre</span>
+                    </div>
+                    <div class="receta-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Dificultad:</span>
+                            <span class="badge badge-warning">Media</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Tiempo:</span>
+                            <span>60 min</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Porciones:</span>
+                            <span>8</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Ingredientes:</span>
+                            <span>6</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="receta-card">
+                    <div class="receta-header">
+                        <h4>Batido de Fresas</h4>
+                        <span class="badge badge-info">Bebida</span>
+                    </div>
+                    <div class="receta-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Dificultad:</span>
+                            <span class="badge badge-success">Baja</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Tiempo:</span>
+                            <span>10 min</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Porciones:</span>
+                            <span>2</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Ingredientes:</span>
+                            <span>4</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="reporte.js"></script>
+</body>
+</html>
