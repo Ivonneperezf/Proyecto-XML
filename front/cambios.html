@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Receta - Recetario Digital</title>
+    <link rel="stylesheet" href="cambios.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+                </svg>
+                <h1>Recetario Digital</h1>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="insertar.html" class="nav-link active">Insertar</a>
+                <a href="bajas.html" class="nav-link active">Elimiar</a>
+                <a href="cambios.html" class="nav-link active">Editar</a>
+                <a href="consultas.html" class="nav-link active">Consultar</a>
+                <a href="reporte.html" class="nav-link active">Reporte</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h2>✎ Editar Receta</h2>
+            <p>Busca y modifica los detalles de una receta existente</p>
+        </div>
+
+        <div class="content-wrapper">
+            <!-- PANEL IZQUIERDO -> para búsqueda y Lista -->
+            <aside class="sidebar-panel">
+                <div class="search-card">
+                    <h3 class="card-title">Buscar Receta</h3>
+                    
+                    <!-- JAVASCRIPT: Buscar por ID -->
+                    <div class="search-box">
+                        <input type="text" id="searchId" placeholder="ID (ej: r001)" class="input-field">
+                        <button id="btnBuscar" class="btn btn-primary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div id="mensajeBusqueda" class="mensaje-info">
+                        Ingresa el ID de la receta que deseas editar
+                    </div>
+                </div>
+
+                <!-- Lista de recetas disponibles  -->
+                <div class="recetas-list">
+                    <h3 class="card-title">Recetas Disponibles</h3>
+                    <div class="receta-item">
+                        <span class="receta-id">r001</span>
+                        <span class="receta-nombre">Pastel de Chocolate</span>
+                    </div>
+                    <div class="receta-item">
+                        <span class="receta-id">r002</span>
+                        <span class="receta-nombre">Ensalada César</span>
+                    </div>
+                    <div class="receta-item">
+                        <span class="receta-id">r003</span>
+                        <span class="receta-nombre">Paella Valenciana</span>
+                    </div>
+                    <div class="receta-item">
+                        <span class="receta-id">r004</span>
+                        <span class="receta-nombre">Flan Casero</span>
+                    </div>
+                    <div class="receta-item">
+                        <span class="receta-id">r005</span>
+                        <span class="receta-nombre">Batido de Fresas</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- PANEL DERECHO-> Para el formulario a editar -->
+            <div class="main-panel">
+                <form id="formEditar" class="form-container">
+                    
+                    <!-- Información Básica -->
+                    <div class="form-section">
+                        <h3 class="section-title">Información Básica</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="recetaId">ID de Receta</label>
+                                <input type="text" id="recetaId" class="input-field" value="r001" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nombre">Nombre de la Receta *</label>
+                                <input type="text" id="nombre" class="input-field" value="Pastel de Chocolate" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="categoria">Categoría *</label>
+                                <select id="categoria" class="input-field" required>
+                                    <option value="Entrada">Entrada</option>
+                                    <option value="Plato Principal">Plato Principal</option>
+                                    <option value="Postre" selected>Postre</option>
+                                    <option value="Bebida">Bebida</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dificultad">Dificultad *</label>
+                                <select id="dificultad" class="input-field" required>
+                                    <option value="Baja">Baja</option>
+                                    <option value="Media" selected>Media</option>
+                                    <option value="Alta">Alta</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="descripcion">Descripción</label>
+                            <textarea id="descripcion" class="input-field" rows="2">Delicioso pastel de chocolate esponjoso y húmedo.</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Ingredientes -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            Ingredientes
+                            <button type="button" id="btnAgregarIngrediente" class="btn-icon" title="Agregar ingrediente">+</button>
+                        </h3>
+                        
+                        <div id="ingredientesContainer">
+                            <!-- Ingrediente 1  ejemplooo-->
+                            <div class="ingrediente-item">
+                                <div class="form-group">
+                                    <input type="text" class="input-field ing-nombre" value="Harina" placeholder="Ingrediente">
+                                </div>
+                                <div class="form-group-inline">
+                                    <input type="number" class="input-field ing-cantidad" value="200" placeholder="Cant.">
+                                    <select class="input-field ing-unidad">
+                                        <option value="g" selected>g</option>
+                                        <option value="kg">kg</option>
+                                        <option value="ml">ml</option>
+                                        <option value="l">l</option>
+                                        <option value="u">u</option>
+                                        <option value="cucharada">cdas</option>
+                                        <option value="cucharadita">cdta</option>
+                                    </select>
+                                </div>
+                                <button type="button" class="btn-delete">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Ingrediente 2 -->
+                            <div class="ingrediente-item">
+                                <div class="form-group">
+                                    <input type="text" class="input-field ing-nombre" value="Cacao en polvo" placeholder="Ingrediente">
+                                </div>
+                                <div class="form-group-inline">
+                                    <input type="number" class="input-field ing-cantidad" value="100" placeholder="Cant.">
+                                    <select class="input-field ing-unidad">
+                                        <option value="g" selected>g</option>
+                                        <option value="kg">kg</option>
+                                        <option value="ml">ml</option>
+                                        <option value="l">l</option>
+                                    </select>
+                                </div>
+                                <button type="button" class="btn-delete">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Ingrediente 3 -->
+                            <div class="ingrediente-item">
+                                <div class="form-group">
+                                    <input type="text" class="input-field ing-nombre" value="Azúcar" placeholder="Ingrediente">
+                                </div>
+                                <div class="form-group-inline">
+                                    <input type="number" class="input-field ing-cantidad" value="150" placeholder="Cant.">
+                                    <select class="input-field ing-unidad">
+                                        <option value="g" selected>g</option>
+                                        <option value="kg">kg</option>
+                                        <option value="ml">ml</option>
+                                    </select>
+                                </div>
+                                <button type="button" class="btn-delete">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pasos de Preparación -->
+                    <div class="form-section">
+                        <h3 class="section-title">
+                            Pasos de Preparación
+                            <button type="button" id="btnAgregarPaso" class="btn-icon" title="Agregar paso">+</button>
+                        </h3>
+                        
+                        <div id="pasosContainer">
+                            <!-- Paso 1 -->
+                            <div class="paso-item">
+                                <div class="paso-numero">1</div>
+                                <textarea class="input-field paso-descripcion" rows="2">Precalentar el horno a 180°C.</textarea>
+                                <button type="button" class="btn-delete">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Paso 2 -->
+                            <div class="paso-item">
+                                <div class="paso-numero">2</div>
+                                <textarea class="input-field paso-descripcion" rows="2">Mezclar los ingredientes secos.</textarea>
+                                <button type="button" class="btn-delete">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Paso 3 -->
+                            <div class="paso-item">
+                                <div class="paso-numero">3</div>
+                                <textarea class="input-field paso-descripcion" rows="2">Añadir los ingredientes líquidos y mezclar bien.</textarea>
+                                <button type="button" class="btn-delete">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detalles Adicionales -->
+                    <div class="form-section">
+                        <h3 class="section-title">Detalles Adicionales</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tiempoTotal">Tiempo Total (min)</label>
+                                <input type="number" id="tiempoTotal" class="input-field" value="60" min="1">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="porciones">Porciones</label>
+                                <input type="number" id="porciones" class="input-field" value="8" min="1">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="videoUrl">URL del Video</label>
+                            <input type="url" id="videoUrl" class="input-field" value="https://www.youtube.com/watch?v=abcd1234">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="enlaceUrl">Enlace de Referencia</label>
+                            <input type="url" id="enlaceUrl" class="input-field" value="https://www.recetas.com/pastel-de-chocolate">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notas">Notas Adicionales</label>
+                            <textarea id="notas" class="input-field" rows="2">Se puede decorar con frutas o crema batida.</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Botones de Acción -->
+                    <div class="form-actions">
+                        <button type="button" id="btnCancelar" class="btn btn-secondary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-success">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            Guardar Cambios
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- JAVASCRIPT: para las funciones xd -->
+    <script src="cambios.js"></script>
+</body>
+</html>
