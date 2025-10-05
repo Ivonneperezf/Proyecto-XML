@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.recetas.com"
+           xmlns="http://www.recetas.com"
+           elementFormDefault="qualified">
+    <!--Enumeraciones-->
+    <xs:simpleType name="tCategoria">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Entrada"/>
+            <xs:enumeration value="Plato Principal"/>
+            <xs:enumeration value="Postre"/>
+            <xs:enumeration value="Bebida"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tDificultad">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Baja"/>
+            <xs:enumeration value="Media"/>
+            <xs:enumeration value="Alta"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tUnidadTiempo">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="minutos"/>
+            <xs:enumeration value="horas"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Tipos Reutilizables -->
+    <xs:complexType name="tIngrediente">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="cantidad" type="xs:decimal" use="required"/>
+                <xs:attribute name="unidad" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="tPaso">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="orden" type="xs:positiveInteger" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="tVideo">
+        <xs:attribute name="url" type="xs:anyURI" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="tEnlace">
+        <xs:attribute name="url" type="xs:anyURI" use="required"/>
+    </xs:complexType>
+
+    <!--Tipo principal receta-->
+    <xs:complexType name="tReceta">
+        <xs:sequence>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="descripcion" type="xs:string"/>
+            <xs:element name="ingredientes">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ingrediente" type="tIngrediente" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="preparacion">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="paso" type="tPaso" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="tiempo">
+                <xs:complexType>
+                    <xs:attribute name="total" type="xs:positiveInteger" use="required"/>
+                    <xs:attribute name="unidad" type="tUnidadTiempo" use="required"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="porciones">
+                <xs:complexType>
+                    <xs:attribute name="cantidad" type="xs:positiveInteger" use="required"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="video" type="tVideo" minOccurs="0"/>
+            <xs:element name="enlace" type="tEnlace" minOccurs="0"/>
+            <xs:element name="notas" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+        <xs:attribute name="categoria" type="tCategoria" use="required"/>
+        <xs:attribute name="dificultad" type="tDificultad" use="required"/>
+    </xs:complexType>
+
+    <!--Recetario completo-->
+    <xs:element name="recetario">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="receta" type="tReceta" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
