@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertar Receta - Recetario Digital</title>
+    <link rel="stylesheet" href="insertar.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+                </svg>
+                <h1>Recetario Digital</h1>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="insertar.html" class="nav-link active">Insertar</a>
+                <a href="bajas.html" class="nav-link">Eliminar</a>
+                <a href="cambios.html" class="nav-link">Editar</a>
+                <a href="consultas.html" class="nav-link">Consultar</a>
+                <a href="reporte.html" class="nav-link">Reporte</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="main-content">
+        <div class="page-header">
+            <h2>➕ Insertar Nueva Receta</h2>
+            <p>Agrega los detalles de tu nueva creación culinaria</p>
+        </div>
+
+        <div class="form-container">
+            <form id="formReceta">
+
+                <!-- Información Básica -->
+                <div class="form-section">
+                    <h3 class="section-title">Información Básica</h3>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="idReceta">ID de la Receta *</label>
+                            <input type="text" id="idReceta" class="input-field" placeholder="Ej: r001" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nombre">Nombre de la Receta *</label>
+                            <input type="text" id="nombre" class="input-field" placeholder="Ej: Tacos al Pastor" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="categoria">Categoría *</label>
+                            <select id="categoria" class="input-field" required>
+                                <option value="" disabled selected>Selecciona una categoría</option>
+                                <option value="Entrada">Entrada</option>
+                                <option value="Plato Principal">Plato Principal</option>
+                                <option value="Postre">Postre</option>
+                                <option value="Bebida">Bebida</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dificultad">Dificultad *</label>
+                            <select id="dificultad" class="input-field" required>
+                                <option value="" disabled selected>Selecciona la dificultad</option>
+                                <option value="Baja">Baja</option>
+                                <option value="Media">Media</option>
+                                <option value="Alta">Alta</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descripcion">Descripción *</label>
+                        <textarea id="descripcion" class="input-field" rows="2" placeholder="Breve descripción de la receta..." required></textarea>
+                    </div>
+                </div>
+
+                <!-- Ingredientes -->
+                <div class="form-section">
+                    <h3 class="section-title">
+                        Ingredientes
+                        <button type="button" id="btnAgregarIngrediente" class="btn-icon" title="Agregar ingrediente">+</button>
+                    </h3>
+                    
+                    <div id="ingredientesContainer">
+                        <!-- Los ingredientes se agregarán dinámicamente aquí -->
+                    </div>
+                </div>
+
+                <!-- Pasos de Preparación -->
+                <div class="form-section">
+                    <h3 class="section-title">
+                        Pasos de Preparación
+                        <button type="button" id="btnAgregarPaso" class="btn-icon" title="Agregar paso">+</button>
+                    </h3>
+                    
+                    <div id="pasosContainer">
+                        <!-- Los pasos se agregarán dinámicamente aquí -->
+                    </div>
+                </div>
+
+                <!-- Detalles Adicionales -->
+                <div class="form-section">
+                    <h3 class="section-title">Detalles Adicionales</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tiempoTotal">Tiempo Total (min) *</label>
+                            <input type="number" id="tiempoTotal" class="input-field" placeholder="Ej: 30" min="1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="porciones">Porciones *</label>
+                            <input type="number" id="porciones" class="input-field" placeholder="Ej: 4" min="1" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="videoUrl">URL del Video (opcional)</label>
+                        <input type="url" id="videoUrl" class="input-field" placeholder="https://www.youtube.com/watch?v=...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="enlaceUrl">Enlace de Referencia (opcional)</label>
+                        <input type="url" id="enlaceUrl" class="input-field" placeholder="https://www.ejemplo.com/receta">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notas">Notas Adicionales (opcional)</label>
+                        <textarea id="notas" class="input-field" rows="2" placeholder="Consejos, variaciones o notas especiales..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Botones de Acción -->
+                <div class="form-actions">
+                    <button type="reset" class="btn btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                        Limpiar Formulario
+                    </button>
+                    <button type="submit" class="btn btn-success">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Guardar Receta
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- JAVASCRIPT -->
+    <script src="insertar.js"></script>
+</body>
+</html>
