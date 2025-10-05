@@ -4,6 +4,8 @@ const cards = document.querySelectorAll('.card-3d');
 const indicators = document.querySelectorAll('.indicator');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
+const coverflowWrapper = document.querySelector('.coverflow-wrapper');
+let autoPlayInterval;
 
 // Función para actualizar las posiciones de las tarjetas
 function updateCards() {
@@ -64,12 +66,23 @@ function goToSlide(index) {
     updateCards();
 }
 
+// Funciones de Autoplay
+function startAutoplay() {
+    autoPlayInterval = setInterval(nextSlide, 2000); // Inicia el autoplay
+}
+
+function stopAutoplay() {
+    clearInterval(autoPlayInterval); // Detiene el autoplay
+}
+
 // Event Listeners
 prevBtn.addEventListener('click', prevSlide);
 nextBtn.addEventListener('click', nextSlide);
 indicators.forEach((indicator, index) => {
     indicator.addEventListener('click', () => goToSlide(index));
 });
+coverflowWrapper.addEventListener('mouseenter', stopAutoplay); //Pausa al pasar el mouse
+coverflowWrapper.addEventListener('mouseleave', startAutoplay); //Sigue al quitar el mouse
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
@@ -83,15 +96,20 @@ document.addEventListener('keydown', (e) => {
 // Touch/Swipe support
 let touchStartX = 0;
 let touchEndX = 0;
-const coverflowWrapper = document.querySelector('.coverflow-wrapper');
 
 coverflowWrapper.addEventListener('touchstart', (e) => {
     touchStartX = e.changedTouches[0].screenX;
+    // Simula mouseover al tocar
+    coverflowWrapper.classList.add('hovered');
 });
 
 coverflowWrapper.addEventListener('touchend', (e) => {
     touchEndX = e.changedTouches[0].screenX;
     handleSwipe();
+    // Quita el efecto de hover después de un momento
+    setTimeout(() => {
+        coverflowWrapper.classList.remove('hovered');
+    }, 500);
 });
 
 function handleSwipe() {
@@ -105,4 +123,4 @@ function handleSwipe() {
 
 // Inicializar
 updateCards();
-setInterval(nextSlide, 3000); // 🔁 Autoplay activado desde el inicio
+startAutoplay(); // 🔁 Autoplay activado desde el inicio
