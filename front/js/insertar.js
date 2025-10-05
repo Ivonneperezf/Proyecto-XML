@@ -1,42 +1,84 @@
 let ingredientes = [];
+let pasos = [];
+let listaIds = [];
 const ingredientesContainer = document.getElementById("ingredientesContainer");
+const pasosContainer = document.getElementById("pasosContainer");
 
 // Función para leer entradas
 function validar_entradas() {
+    const numTem = 0;
+    const numuni= "";
     // Obtener los valores de los campos del formulario
     const idReceta = document.getElementById("idReceta").value.trim();
     const nombre = document.getElementById("nombre").value.trim();
-    const categoria = document.getElementById("categoria").value;
-    const dificultad = document.getElementById("dificultad").value;
+    const categoria = document.getElementById("categoria").value.trim();
+    const dificultad = document.getElementById("dificultad").value.trim();
     const descripcion = document.getElementById("descripcion").value.trim();
-    const tiempoTotal = document.getElementById("tiempoTotal").value;
-    const porciones = document.getElementById("porciones").value;
-    const videoUrl = document.getElementById("videoUrl").value.trim();
-    const enlaceUrl = document.getElementById("enlaceUrl").value.trim();
-    const notas = document.getElementById("notas").value.trim();
+    const tiempoTotalNumero = document.getElementById("tiempoTotalNumero").value;
+    const tiempoTotalUnidad = document.getElementById("tiempoTotalUnidad").value.trim();
+    // const porciones = document.getElementById("porciones").value;
+    // const videoUrl = document.getElementById("videoUrl").value.trim();
+    // const enlaceUrl = document.getElementById("enlaceUrl").value.trim();
+    // const notas = document.getElementById("notas").value.trim();
 
     // Validar campos obligatorios
-    if (!idReceta || !nombre || !categoria || !dificultad || !descripcion || !tiempoTotal || !porciones) {
-        alert("Por favor completa todos los campos obligatorios (*)");
-        return false;
-    }
+
+
+    fetch("http://localhost/Proyectos/ProyectoXML/data/recetario.xml")
+    .then(response => response.text())
+    .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+    .then(xmlDoc => {
+        const recetas = xmlDoc.getElementsByTagNameNS("http://www.recetas.com", "receta");
+
+        // Vaciar la lista antes de llenarla
+        listaIds = [];
+
+        for (let i = 0; i < recetas.length; i++) {
+            const id = recetas[i].getAttribute("id");
+            listaIds.push(id.trim());
+        }
+
+        if (!idReceta || !nombre || categoria == "" || dificultad == "" || !descripcion ||!tiempoTotalNumero||!tiempoTotalUnidad) {
+            alert("Por favor completa todos los campos obligatorios (*)");
+            return false;
+        }
+
+        if (ingredientes.length == 0){
+            alert("Agrega los ingredientes por favor");
+            return false;
+        }
+
+        if (pasos.length == 0){
+            alert("Agrega los pasos por favor");
+            return false;
+        }
+
+        // Comparación dentro del fetch
+        if (listaIds.includes(idReceta)) {
+            alert("El ID ya existe");
+            return false;
+        }
+
+        numTem = parseInt(tiempoTotalNumero,10);
+    })
+    .catch(err => console.error("Error al cargar XML:", err));
 
     // Si todo está correcto, devolver un objeto con los valores
-    const receta = {
-        idReceta,
-        nombre,
-        categoria,
-        dificultad,
-        descripcion,
-        tiempoTotal: parseInt(tiempoTotal),
-        porciones: parseInt(porciones),
-        videoUrl,
-        enlaceUrl,
-        notas
-    };
+    // const receta = {
+    //     idReceta,
+    //     nombre,
+    //     categoria,
+    //     dificultad,
+    //     descripcion,
+    //     tiempoTotal: parseInt(tiempoTotal),
+    //     porciones: parseInt(porciones),
+    //     videoUrl,
+    //     enlaceUrl,
+    //     notas
+    // };
 
-    console.log("Datos leídos del formulario:", receta);
-    return receta;
+    // console.log("Datos leídos del formulario:", receta);
+    // return receta;
 }
 
 // Función para agregar un ingrediente
@@ -84,22 +126,14 @@ function agregar_ingrediente() {
     ingredienteDiv.style.justifyContent = "space-between";
     ingredienteDiv.style.alignItems = "center";
     ingredienteDiv.style.marginBottom = "5px";
-
-    // Texto del ingrediente
     const texto = document.createElement("span");
     texto.textContent = `${cantidad} ${unidad} de ${nombre}`;
-
-    // Botón de borrar
     const btnBorrar = document.createElement("button");
     btnBorrar.textContent = "🗑️";
     btnBorrar.classList.add("btn-borrar");
     btnBorrar.addEventListener("click", () => borrar_ingrediente(ingredienteDiv, ingrediente));
-
-    // Agregar texto y botón al div
     ingredienteDiv.appendChild(texto);
     ingredienteDiv.appendChild(btnBorrar);
-
-    // Agregar div al contenedor
     ingredientesContainer.appendChild(ingredienteDiv);
 }
 
@@ -109,4 +143,68 @@ function borrar_ingrediente(divElemento, ingredienteObj) {
     divElemento.remove();
     console.log("Ingrediente eliminado:", ingredienteObj);
     console.log(ingredientes);
+}
+
+// Función para agregar un paso
+function agregar_paso() {
+    let descripcion = "";
+    while (true) {
+        descripcion = prompt("Describe el paso de preparación:");
+        if (descripcion === null) return; // si cancela, salir
+        if (descripcion.trim() === "") {
+            alert("Debes ingresar una descripción para el paso.");
+        } else {
+            break;
+        }
+    }
+    const paso = { descripcion };
+    pasos.push(paso);
+    console.log("Paso agregado:", paso);
+    console.log(pasos);
+
+    // Crear un elemento visual para el paso
+    const pasoDiv = document.createElement("div");
+    pasoDiv.classList.add("paso-item");
+    pasoDiv.style.display = "flex";
+    pasoDiv.style.justifyContent = "space-between";
+    pasoDiv.style.alignItems = "center";
+    pasoDiv.style.marginBottom = "5px";
+    const numero = pasos.length;
+    const texto = document.createElement("span");
+    texto.textContent = `${numero}. ${descripcion}`;
+    const btnBorrar = document.createElement("button");
+    btnBorrar.textContent = "🗑️";
+    btnBorrar.classList.add("btn-borrar");
+    btnBorrar.addEventListener("click", () => borrar_paso(pasoDiv, paso));
+    pasoDiv.appendChild(texto);
+    pasoDiv.appendChild(btnBorrar);
+    pasosContainer.appendChild(pasoDiv);
+}
+
+// Función para borrar un paso
+function borrar_paso(divElemento, pasoObj) {
+    
+    pasos = pasos.filter(p => p !== pasoObj);
+    
+    divElemento.remove();
+
+    const elementos = pasosContainer.querySelectorAll("span");
+    elementos.forEach((el, index) => {
+        el.textContent = `${index + 1}. ${pasos[index].descripcion}`;
+    });
+    console.log("Paso eliminado:", pasoObj);
+    console.log(pasos);
+}
+
+// Función para limpiar el formulario por completo
+function limpiar_formulario() {
+    const form = document.getElementById("formReceta");
+    form.reset(); 
+    ingredientes = [];
+    pasos = [];
+    const ingredientesContainer = document.getElementById("ingredientesContainer");
+    const pasosContainer = document.getElementById("pasosContainer");
+    ingredientesContainer.innerHTML = "";
+    pasosContainer.innerHTML = "";
+    console.log("Formulario, ingredientes y pasos limpiados.");
 }
