@@ -343,3 +343,9 @@ select.input-field {
     background-color: #ffe5e5;
     transition: all 0.3s ease;
 }
+
+.input-field[readonly] {
+    background-color: rgba(139, 154, 255, 0.35); /* fondo azul claro */
+    color: #707880; /* gris medio */
+    cursor: not-allowed;
+}

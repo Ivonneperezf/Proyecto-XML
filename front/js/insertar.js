@@ -9,12 +9,15 @@ async function cargarXML() {
     try {
         const response = await fetch("../data/recetario.xml");
         if (!response.ok) throw new Error("No se pudo cargar el XML");
+
         const xmlText = await response.text();
         const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlText, "application/xml"); 
+        const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+
         if (xmlDoc.getElementsByTagName("parsererror").length > 0) {
             throw new Error("Error al analizar el XML");
         }
+
         const recetas = xmlDoc.getElementsByTagNameNS("http://www.recetas.com", "receta");
         listaIds = [];
 
@@ -22,10 +25,24 @@ async function cargarXML() {
             const id = recetas[i].getAttribute("id");
             if (id) listaIds.push(id.trim());
         }
+
+        if (listaIds.length > 0) {
+            const ultimoId = listaIds[listaIds.length - 1]; 
+            const numero = parseInt(ultimoId.substring(1)); 
+            const nuevoNumero = numero + 1;
+            const nuevoId = "r" + nuevoNumero.toString().padStart(3, "0");
+            // Asignar el nuevo ID al campo de texto
+            document.getElementById("idReceta").value = nuevoId;
+        } else {
+            // Si no hay recetas, empieza desde r001
+            document.getElementById("idReceta").value = "r001";
+        }
+
     } catch (error) {
-        console.error("Error cargando el XML:",error);
+        console.error("Error cargando el XML:", error);
     }
 }
+
 
 // Función para leer entradas
 function validar_entradas(event) { 
@@ -83,6 +100,16 @@ function validar_entradas(event) {
 
     // Obtener el valor del ID
     const idReceta = document.getElementById("idReceta").value.trim();
+    const nombre = document.getElementById("nombre").value.trim();
+    const categoria = document.getElementById("categoria").value;
+    const dificultad = document.getElementById("dificultad").value;
+    const descripcion = document.getElementById("descripcion").value.trim();
+    const tiempo = document.getElementById("tiempoTotalNumero").value.trim();
+    const unidadTempo = document.getElementById("tiempoTotalUnidad").value;
+    const porciones = document.getElementById("porciones").value.trim();
+    const videoUrl = document.getElementById("videoUrl").value.trim();
+    const enlaceUrl = document.getElementById("enlaceUrl").value.trim();
+    const notas = document.getElementById("notas").value.trim();
 
     // Verificar si el ID ya existe
     if (listaIds.includes(idReceta)) {
@@ -93,46 +120,13 @@ function validar_entradas(event) {
         return false; // No borra nada del formulario
     }
 
-    // Todo correcto: mostrar mensaje
-    alert("Datos guardados correctamente");
-
     // Limpiar todos los campos del formulario
     campos.forEach(id => {
         document.getElementById(id).value = "";
         document.getElementById(id).classList.remove("input-error");
     });
 
-    const valores_validos = crear_json(ingredientes, pasos);
-
-    // Limpiar ingredientes y pasos
-    ingredientes = [];
-    pasos = [];
-
-    // Limpiar contenedores del DOM (si existen)
-    const ingredientesContainer = document.getElementById("ingredientesContainer");
-    if (ingredientesContainer) ingredientesContainer.innerHTML = "";
-
-    const pasosContainer = document.getElementById("pasosContainer");
-    if (pasosContainer) pasosContainer.innerHTML = "";
-
-    return true;
-}
-
-function crear_json(ingredientes, pasos){
-    const idReceta = document.getElementById("idReceta").value.trim();
-    const nombre = document.getElementById("nombre").value.trim();
-    const categoria = document.getElementById("categoria").value.trim();
-    const dificultad = document.getElementById("dificultad").value.trim();
-    const descripcion = document.getElementById("descripcion").value.trim();
-    const tiempo = document.getElementById("tiempoTotalNumero").value.trim();
-    const unidadTempo = document.getElementById("tiempoTotalUnidad").value.trim();
-    const porciones = document.getElementById("porciones").value.trim();
-    const VideoUrl = document.getElementById("videoUrl").value.trim();
-    const enlaceUrl = document.getElementById("enlaceUrl").value.trim();
-    const notas = document.getElementById("notas").value.trim();
-
-    // Crear el objeto JSON
-    return {
+    const valores_validos = {
         idReceta: idReceta,
         nombre: nombre,
         categoria: categoria,
@@ -149,7 +143,127 @@ function crear_json(ingredientes, pasos){
         ingredientes: ingredientes, // Array de objetos o strings
         pasos: pasos // Array de objetos con descripción y número
     };
+    
+    agregarRecetaXML(valores_validos);
+    // Limpiar ingredientes y pasos
+    ingredientes = [];
+    pasos = [];
+
+    // Limpiar contenedores del DOM (si existen)
+    const ingredientesContainer = document.getElementById("ingredientesContainer");
+    if (ingredientesContainer) ingredientesContainer.innerHTML = "";
+
+    const pasosContainer = document.getElementById("pasosContainer");
+    if (pasosContainer) pasosContainer.innerHTML = "";
+
+    return true;
 }
+
+async function agregarRecetaXML(valores_validos) {
+    const NS = "http://www.recetas.com"; // Namespace principal
+
+    try {
+        // 1️⃣ Cargar el XML existente
+        const response = await fetch("../data/recetario.xml");
+        if (!response.ok) throw new Error("No se pudo cargar el XML");
+
+        const xmlText = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+
+        if (xmlDoc.getElementsByTagName("parsererror").length > 0) {
+            throw new Error("Error al analizar el XML");
+        }
+
+        // 2️⃣ Crear el elemento <receta>
+        const receta = xmlDoc.createElementNS(NS, "receta");
+        receta.setAttribute("id", valores_validos.idReceta);
+        receta.setAttribute("categoria", valores_validos.categoria);
+        receta.setAttribute("dificultad", valores_validos.dificultad);
+
+        // 3️⃣ Agregar <nombre> y <descripcion>
+        const nombre = xmlDoc.createElementNS(NS, "nombre");
+        nombre.textContent = valores_validos.nombre;
+        receta.appendChild(nombre);
+
+        const descripcion = xmlDoc.createElementNS(NS, "descripcion");
+        descripcion.textContent = valores_validos.descripcion;
+        receta.appendChild(descripcion);
+
+        // 4️⃣ Agregar <ingredientes> y <ingrediente>
+        const ingredientes = xmlDoc.createElementNS(NS, "ingredientes");
+        valores_validos.ingredientes.forEach(p => {
+            const ing = xmlDoc.createElementNS(NS, "ingrediente");
+            ing.setAttribute("cantidad", p.cantidad);
+            ing.setAttribute("unidad", p.unidad);
+            ing.textContent = p.nombre;
+            ingredientes.appendChild(ing);
+        });
+        receta.appendChild(ingredientes);
+
+        // 5️⃣ Agregar <preparacion> y <paso>
+        const preparacion = xmlDoc.createElementNS(NS, "preparacion");
+        valores_validos.pasos.forEach((p, i) => {
+            const paso = xmlDoc.createElementNS(NS, "paso");
+            paso.setAttribute("orden", (i + 1).toString());
+            paso.textContent = p.descripcion;
+            preparacion.appendChild(paso);
+        });
+        receta.appendChild(preparacion);
+
+        // 6️⃣ Agregar <tiempo>, <porciones>, <video>, <enlace> y <notas>
+        const tiempo = xmlDoc.createElementNS(NS, "tiempo");
+        tiempo.setAttribute("total", valores_validos.tiempoTotal.cantidad);
+        tiempo.setAttribute("unidad", valores_validos.tiempoTotal.unidad);
+        receta.appendChild(tiempo);
+
+        const porciones = xmlDoc.createElementNS(NS, "porciones");
+        porciones.setAttribute("cantidad", valores_validos.porciones);
+        receta.appendChild(porciones);
+
+        if (valores_validos.videoUrl) {
+            const video = xmlDoc.createElementNS(NS, "video");
+            video.setAttribute("url", valores_validos.videoUrl);
+            receta.appendChild(video);
+        }
+
+        if (valores_validos.enlaceUrl) {
+            const enlace = xmlDoc.createElementNS(NS, "enlace");
+            enlace.setAttribute("url", valores_validos.enlaceUrl);
+            receta.appendChild(enlace);
+        }
+
+        if (valores_validos.notas) {
+            const notas = xmlDoc.createElementNS(NS, "notas");
+            notas.textContent = valores_validos.notas;
+            receta.appendChild(notas);
+        }
+        // 7️⃣ Agregar la receta al recetario
+        xmlDoc.documentElement.appendChild(receta);
+
+        // 8️⃣ Convertir a string para enviar o guardar
+        const serializer = new XMLSerializer();
+        const nuevoXMLString = serializer.serializeToString(xmlDoc);
+
+        console.log(nuevoXMLString);
+
+        // 9️⃣ Enviar al servidor para guardar
+        const respuesta = await fetch("../backend/guardar_recetario.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/xml" },
+            body: nuevoXMLString
+        });
+        const mensaje = await respuesta.text();
+
+        //  🔔 Mostrar mensaje del servidor
+        alert(mensaje);
+
+    } catch (error) {
+        console.error("Error agregando la receta:", error);
+        alert("Ocurrió un error al agregar la receta. Revisa la consola.");
+    }
+}
+
 // Función para agregar un ingrediente
 function agregar_ingrediente() {
     let nombre = "";
