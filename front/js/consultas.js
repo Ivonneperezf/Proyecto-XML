@@ -241,7 +241,3 @@ function aplicarFiltrosActuales() {
     }
     mostrarListaResultados(filtradas);
 }
-
-
-
-
