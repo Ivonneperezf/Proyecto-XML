@@ -337,3 +337,9 @@ select.input-field {
         width: 100%;
     }
 }
+
+.input-error {
+    border: 2px solid red;
+    background-color: #ffe5e5;
+    transition: all 0.3s ease;
+}

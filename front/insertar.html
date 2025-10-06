@@ -6,7 +6,7 @@
     <title>Insertar Receta - Recetario Digital</title>
     <link rel="stylesheet" href="Style/insertar.css">
 </head>
-<body>
+<body onload="cargarXML()">
     <!-- HEADER -->
     <header class="header">
         <div class="header-content">
@@ -36,7 +36,7 @@
         </div>
 
         <div class="form-container">
-            <form id="formReceta">
+            <form id="formReceta" > <!--onsubmit="return validar_entradas(event)"-->
 
                 <!-- Información Básica -->
                 <div class="form-section">
@@ -156,7 +156,7 @@
                         </svg>
                         Limpiar Formulario
                     </button>
-                    <button type="submit" class="btn btn-success" onclick="validar_entradas()">
+                    <button type="submit" class="btn btn-success" onclick="validar_entradas(event)">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
