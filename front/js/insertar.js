@@ -4,83 +4,152 @@ let listaIds = [];
 const ingredientesContainer = document.getElementById("ingredientesContainer");
 const pasosContainer = document.getElementById("pasosContainer");
 
+// Funcion para cargar XML
+async function cargarXML() {
+    try {
+        const response = await fetch("../data/recetario.xml");
+        if (!response.ok) throw new Error("No se pudo cargar el XML");
+        const xmlText = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, "application/xml"); 
+        if (xmlDoc.getElementsByTagName("parsererror").length > 0) {
+            throw new Error("Error al analizar el XML");
+        }
+        const recetas = xmlDoc.getElementsByTagNameNS("http://www.recetas.com", "receta");
+        listaIds = [];
+
+        for (let i = 0; i < recetas.length; i++) {
+            const id = recetas[i].getAttribute("id");
+            if (id) listaIds.push(id.trim());
+        }
+    } catch (error) {
+        console.error("Error cargando el XML:",error);
+    }
+}
+
 // Función para leer entradas
-function validar_entradas() {
-    const numTem = 0;
-    const numuni= "";
-    // Obtener los valores de los campos del formulario
+function validar_entradas(event) { 
+    // Prevenir envío si se llama desde onsubmit
+    if (event) event.preventDefault();
+
+    const campos = [
+        "idReceta",
+        "nombre",
+        "categoria",
+        "dificultad",
+        "descripcion",
+        "tiempoTotalNumero",
+        "tiempoTotalUnidad",
+        "porciones"
+    ];
+    let valido = true;
+
+    // Agregar eventos para quitar el color rojo cuando el campo tenga contenido
+    campos.forEach(id => {
+        const elemento = document.getElementById(id);
+        elemento.addEventListener("input", () => {
+            if (elemento.value.trim() !== "") {
+                elemento.classList.remove("input-error");
+            }
+        });
+    });
+
+    // Verificar campos vacíos
+    campos.forEach(id => {
+        const elemento = document.getElementById(id);
+        const valor = elemento.value.trim();
+
+        if (!valor) {
+            elemento.classList.add("input-error");
+            valido = false;
+        }
+    });
+
+    if (!valido) {
+        alert("Por favor completa todos los campos obligatorios (*)");
+        return false;
+    }
+
+    // Verificar que existan ingredientes y pasos
+    if (ingredientes.length === 0) {
+        alert("Agrega los ingredientes por favor");
+        return false;
+    }
+
+    if (pasos.length === 0) {
+        alert("Agrega los pasos por favor");
+        return false;
+    }
+
+    // Obtener el valor del ID
+    const idReceta = document.getElementById("idReceta").value.trim();
+
+    // Verificar si el ID ya existe
+    if (listaIds.includes(idReceta)) {
+        alert("El ID ya existe");
+        const campo = document.getElementById("idReceta");
+        campo.classList.add("input-error");
+        campo.focus();
+        return false; // No borra nada del formulario
+    }
+
+    // Todo correcto: mostrar mensaje
+    alert("Datos guardados correctamente");
+
+    // Limpiar todos los campos del formulario
+    campos.forEach(id => {
+        document.getElementById(id).value = "";
+        document.getElementById(id).classList.remove("input-error");
+    });
+
+    const valores_validos = crear_json(ingredientes, pasos);
+
+    // Limpiar ingredientes y pasos
+    ingredientes = [];
+    pasos = [];
+
+    // Limpiar contenedores del DOM (si existen)
+    const ingredientesContainer = document.getElementById("ingredientesContainer");
+    if (ingredientesContainer) ingredientesContainer.innerHTML = "";
+
+    const pasosContainer = document.getElementById("pasosContainer");
+    if (pasosContainer) pasosContainer.innerHTML = "";
+
+    return true;
+}
+
+function crear_json(ingredientes, pasos){
     const idReceta = document.getElementById("idReceta").value.trim();
     const nombre = document.getElementById("nombre").value.trim();
     const categoria = document.getElementById("categoria").value.trim();
     const dificultad = document.getElementById("dificultad").value.trim();
     const descripcion = document.getElementById("descripcion").value.trim();
-    const tiempoTotalNumero = document.getElementById("tiempoTotalNumero").value;
-    const tiempoTotalUnidad = document.getElementById("tiempoTotalUnidad").value.trim();
-    // const porciones = document.getElementById("porciones").value;
-    // const videoUrl = document.getElementById("videoUrl").value.trim();
-    // const enlaceUrl = document.getElementById("enlaceUrl").value.trim();
-    // const notas = document.getElementById("notas").value.trim();
+    const tiempo = document.getElementById("tiempoTotalNumero").value.trim();
+    const unidadTempo = document.getElementById("tiempoTotalUnidad").value.trim();
+    const porciones = document.getElementById("porciones").value.trim();
+    const VideoUrl = document.getElementById("videoUrl").value.trim();
+    const enlaceUrl = document.getElementById("enlaceUrl").value.trim();
+    const notas = document.getElementById("notas").value.trim();
 
-    // Validar campos obligatorios
-
-
-    fetch("http://localhost/Proyectos/ProyectoXML/data/recetario.xml")
-    .then(response => response.text())
-    .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
-    .then(xmlDoc => {
-        const recetas = xmlDoc.getElementsByTagNameNS("http://www.recetas.com", "receta");
-
-        // Vaciar la lista antes de llenarla
-        listaIds = [];
-
-        for (let i = 0; i < recetas.length; i++) {
-            const id = recetas[i].getAttribute("id");
-            listaIds.push(id.trim());
-        }
-
-        if (!idReceta || !nombre || categoria == "" || dificultad == "" || !descripcion ||!tiempoTotalNumero||!tiempoTotalUnidad) {
-            alert("Por favor completa todos los campos obligatorios (*)");
-            return false;
-        }
-
-        if (ingredientes.length == 0){
-            alert("Agrega los ingredientes por favor");
-            return false;
-        }
-
-        if (pasos.length == 0){
-            alert("Agrega los pasos por favor");
-            return false;
-        }
-
-        // Comparación dentro del fetch
-        if (listaIds.includes(idReceta)) {
-            alert("El ID ya existe");
-            return false;
-        }
-
-        numTem = parseInt(tiempoTotalNumero,10);
-    })
-    .catch(err => console.error("Error al cargar XML:", err));
-
-    // Si todo está correcto, devolver un objeto con los valores
-    // const receta = {
-    //     idReceta,
-    //     nombre,
-    //     categoria,
-    //     dificultad,
-    //     descripcion,
-    //     tiempoTotal: parseInt(tiempoTotal),
-    //     porciones: parseInt(porciones),
-    //     videoUrl,
-    //     enlaceUrl,
-    //     notas
-    // };
-
-    // console.log("Datos leídos del formulario:", receta);
-    // return receta;
+    // Crear el objeto JSON
+    return {
+        idReceta: idReceta,
+        nombre: nombre,
+        categoria: categoria,
+        dificultad: dificultad,
+        descripcion: descripcion,
+        tiempoTotal: {
+            cantidad: tiempo,
+            unidad: unidadTempo
+        },
+        porciones: porciones,
+        videoUrl: videoUrl,
+        enlaceUrl: enlaceUrl,
+        notas: notas,
+        ingredientes: ingredientes, // Array de objetos o strings
+        pasos: pasos // Array de objetos con descripción y número
+    };
 }
-
 // Función para agregar un ingrediente
 function agregar_ingrediente() {
     let nombre = "";
@@ -116,9 +185,6 @@ function agregar_ingrediente() {
     const ingrediente = { nombre, cantidad, unidad };
     ingredientes.push(ingrediente);
 
-    console.log("Ingrediente agregado:", ingrediente);
-    console.log(ingredientes);
-
     // Crear un elemento visual para el ingrediente
     const ingredienteDiv = document.createElement("div");
     ingredienteDiv.classList.add("ingrediente-item");
@@ -141,8 +207,6 @@ function agregar_ingrediente() {
 function borrar_ingrediente(divElemento, ingredienteObj) {
     ingredientes = ingredientes.filter(i => i !== ingredienteObj);
     divElemento.remove();
-    console.log("Ingrediente eliminado:", ingredienteObj);
-    console.log(ingredientes);
 }
 
 // Función para agregar un paso
@@ -159,8 +223,6 @@ function agregar_paso() {
     }
     const paso = { descripcion };
     pasos.push(paso);
-    console.log("Paso agregado:", paso);
-    console.log(pasos);
 
     // Crear un elemento visual para el paso
     const pasoDiv = document.createElement("div");
@@ -192,8 +254,6 @@ function borrar_paso(divElemento, pasoObj) {
     elementos.forEach((el, index) => {
         el.textContent = `${index + 1}. ${pasos[index].descripcion}`;
     });
-    console.log("Paso eliminado:", pasoObj);
-    console.log(pasos);
 }
 
 // Función para limpiar el formulario por completo
@@ -206,5 +266,4 @@ function limpiar_formulario() {
     const pasosContainer = document.getElementById("pasosContainer");
     ingredientesContainer.innerHTML = "";
     pasosContainer.innerHTML = "";
-    console.log("Formulario, ingredientes y pasos limpiados.");
 }
