@@ -1,6 +1,7 @@
 //Esperamos que cargue el documento HTML
 document.addEventListener("DOMContentLoaded", () => {
     cargarXML(); //cuando empiece cargamos el XML
+    resetDetalleReceta();
 });
 
 //Leer el XML
@@ -62,6 +63,7 @@ function cargarRecetas(xml) {
         const notas = receta.getElementsByTagName("notas")[0]?.textContent || "";
         recetas.push({ id, nombre, descripcion, categoria, dificultad, tiempo, unidad, porciones, ingredientes, pasos, video, enlace, notas });
     }
+    mostrarListaResultados(recetas); // muestra todas las recetas al inicio
     console.log("Recetas cargadas:", recetas);
 }
 
@@ -169,8 +171,77 @@ function mostrarDetalleReceta(receta) {
     document.getElementById("detailNotas").textContent = receta.notas || "";
 }
 
-//----- Inicializamos el estado vacío al cargar la página
-document.addEventListener("DOMContentLoaded", () => {
-    resetDetalleReceta();
+//SECCION DE FILTROS AVANZADOS ---------------------------------------------------------------
+//Elementos para filtros y resultados
+const btnAplicarFiltros = document.getElementById("btnAplicarFiltros");
+const selectCategoria = document.getElementById("filterCategoria");
+const selectDificultad = document.getElementById("filterDificultad");
+const resultadosContainer = document.getElementById("resultadosContainer"); //Acuerdate que este es el contenedor para resultados no el principal
+
+//Evento para aplicar filtros
+btnAplicarFiltros.addEventListener("click", () => {
+    aplicarFiltrosActuales();
 });
+
+function mostrarListaResultados(lista) {
+    // Actualizar el título con la cantidad de resultados
+    const tituloResultados = document.querySelector(".results-list .card-title");
+    tituloResultados.textContent = `Resultados (${lista.length})`;
+    // Limpiar resultados previos
+    const contenedor = document.getElementById("resultadosContainer");
+    contenedor.innerHTML = "";
+    lista.forEach(r => {
+        const div = document.createElement("div");
+        div.className = "result-item";
+        div.dataset.id = r.id;
+        div.innerHTML = `
+            <div class="result-info">
+                <div class="result-nombre">${r.nombre}</div>
+                <div class="result-meta">
+                    <span class="result-badge badge-categoria">${r.categoria}</span>
+                    <span class="result-badge badge-dificultad">${r.dificultad}</span>
+                    <span>⏱️ ${r.tiempo} ${r.unidad}</span>
+                </div>
+            </div>
+        `;
+        contenedor.appendChild(div);
+        div.addEventListener("click", () => {
+            mostrarDetalleReceta(r);
+        });
+    });
+}
+
+//REINICIAMOS SI SE BORRA EL FILTRO
+selectCategoria.addEventListener("change", () => {
+    aplicarFiltrosActuales();
+});
+
+selectDificultad.addEventListener("change", () => {
+    aplicarFiltrosActuales();
+});
+
+function aplicarFiltrosActuales() {
+    const categoria = selectCategoria.value;
+    const dificultad = selectDificultad.value;
+    let filtradas = recetas;
+    if (categoria && categoria !== "todas") {
+        filtradas = filtradas.filter(r => r.categoria === categoria);
+    }
+    if (dificultad && dificultad !== "todas") {
+        filtradas = filtradas.filter(r => r.dificultad === dificultad);
+    }
+    // Declaramos el título antes de usarlo
+    const tituloResultados = document.querySelector(".results-list .card-title");
+    if (filtradas.length === 0) {
+        resultadosContainer.innerHTML = `<p style="padding: 1rem;">❌ No se encontraron recetas con esos filtros</p>`;
+        // Actualizar el título con la cantidad de resultados
+        tituloResultados.textContent = `Resultados (0)`;
+        resetDetalleReceta();
+        return;
+    }
+    mostrarListaResultados(filtradas);
+}
+
+
+
 
