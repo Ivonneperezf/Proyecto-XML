@@ -27,17 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
 // Función para cargar XML (reutilizada de insertar.js)
 async function cargarXML() {
     try {
-        console.log("Intentando cargar XML desde: ../data/recetario.xml");
         const response = await fetch("../data/recetario.xml");
-        console.log("Response status:", response.status);
-        
         if (!response.ok) {
             throw new Error(`No se pudo cargar el XML. Status: ${response.status}`);
         }
-        
         const xmlText = await response.text();
-        console.log("XML cargado, primeros 200 caracteres:", xmlText.substring(0, 200));
-        
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, "application/xml");
         
@@ -54,16 +48,12 @@ async function cargarXML() {
         for (let i = 0; i < recetasXML.length; i++) {
             const receta = parsearReceta(recetasXML[i]);
             if (receta) {
-                console.log("Receta parseada:", receta.id, receta.nombre);
                 recetas.push(receta);
             }
         }
-        
         console.log("Total recetas cargadas:", recetas.length);
-        
         // Mostrar lista de recetas
         mostrarListaRecetas();
-        
     } catch (error) {
         console.error("Error completo:", error);
         console.error("Stack trace:", error.stack);
@@ -76,43 +66,51 @@ async function cargarXML() {
 function parsearReceta(recetaXML) {
     try {
         const ns = "http://www.recetas.com";
+
         const id = recetaXML.getAttribute("id");
-        
-        const nombre = recetaXML.getElementsByTagNameNS(ns, "nombre")[0]?.textContent || "";
-        const categoria = recetaXML.getElementsByTagNameNS(ns, "categoria")[0]?.textContent || "";
-        const dificultad = recetaXML.getElementsByTagNameNS(ns, "dificultad")[0]?.textContent || "";
-        const descripcion = recetaXML.getElementsByTagNameNS(ns, "descripcion")[0]?.textContent || "";
-        
+        const categoria = recetaXML.getAttribute("categoria") || "";
+        const dificultad = recetaXML.getAttribute("dificultad") || "";
+
+        const nombre = recetaXML.getElementsByTagNameNS(ns, "nombre")[0]?.textContent.trim() || "";
+        const descripcion = recetaXML.getElementsByTagNameNS(ns, "descripcion")[0]?.textContent.trim() || "";
+
         // Tiempo total
-        const tiempoTotal = recetaXML.getElementsByTagNameNS(ns, "tiempoTotal")[0];
+        const tiempoXML = recetaXML.getElementsByTagNameNS(ns, "tiempo")[0];
         const tiempo = {
-            cantidad: tiempoTotal?.getAttribute("cantidad") || "0",
-            unidad: tiempoTotal?.getAttribute("unidad") || "minutos"
+            total: tiempoXML?.getAttribute("total") || "0",
+            unidad: tiempoXML?.getAttribute("unidad") || "minutos"
         };
-        
-        const porciones = recetaXML.getElementsByTagNameNS(ns, "porciones")[0]?.textContent || "0";
-        
+
+        // Porciones
+        const porcionesXML = recetaXML.getElementsByTagNameNS(ns, "porciones")[0];
+        const porciones = porcionesXML?.getAttribute("cantidad") || "0";
+
         // Ingredientes
         const ingredientesXML = recetaXML.getElementsByTagNameNS(ns, "ingrediente");
         const ingredientes = [];
         for (let i = 0; i < ingredientesXML.length; i++) {
             ingredientes.push({
-                nombre: ingredientesXML[i].getElementsByTagNameNS(ns, "nombre")[0]?.textContent || "",
+                nombre: ingredientesXML[i].textContent.trim(),
                 cantidad: ingredientesXML[i].getAttribute("cantidad") || "",
                 unidad: ingredientesXML[i].getAttribute("unidad") || ""
             });
         }
-        
-        // Pasos
+
+        // Pasos de preparación
         const pasosXML = recetaXML.getElementsByTagNameNS(ns, "paso");
         const pasos = [];
         for (let i = 0; i < pasosXML.length; i++) {
             pasos.push({
-                numero: pasosXML[i].getAttribute("numero") || (i + 1).toString(),
-                descripcion: pasosXML[i].textContent || ""
+                orden: pasosXML[i].getAttribute("orden") || (i + 1).toString(),
+                descripcion: pasosXML[i].textContent.trim()
             });
         }
-        
+
+        // Video, enlace y notas (opcionales)
+        const video = recetaXML.getElementsByTagNameNS(ns, "video")[0]?.getAttribute("url") || "";
+        const enlace = recetaXML.getElementsByTagNameNS(ns, "enlace")[0]?.getAttribute("url") || "";
+        const notas = recetaXML.getElementsByTagNameNS(ns, "notas")[0]?.textContent.trim() || "";
+
         return {
             id,
             nombre,
@@ -122,7 +120,10 @@ function parsearReceta(recetaXML) {
             tiempo,
             porciones,
             ingredientes,
-            pasos
+            pasos,
+            video,
+            enlace,
+            notas
         };
     } catch (error) {
         console.error("Error parseando receta:", error);
@@ -169,6 +170,7 @@ function buscarReceta() {
     const receta = recetas.find(r => r.id.toLowerCase() === id);
     
     if (receta) {
+        console.log(receta);
         recetaSeleccionada = receta;
         mostrarVistaPrevia(receta);
         mensajeBusqueda.textContent = "Receta encontrada";
@@ -185,13 +187,13 @@ function mostrarVistaPrevia(receta) {
     // Ocultar estado vacío y mostrar preview
     emptyState.style.display = "none";
     recipePreview.style.display = "block";
-    
+    //console.log(receta);
     // Llenar datos básicos
     document.getElementById("previewNombre").textContent = receta.nombre;
     document.getElementById("previewCategoria").textContent = receta.categoria;
     document.getElementById("previewDificultad").textContent = receta.dificultad;
     document.getElementById("previewDescripcion").textContent = receta.descripcion;
-    document.getElementById("previewTiempo").textContent = `${receta.tiempo.cantidad} ${receta.tiempo.unidad}`;
+    document.getElementById("previewTiempo").textContent = `${receta.tiempo.total} ${receta.tiempo.unidad}`;
     document.getElementById("previewPorciones").textContent = `${receta.porciones} porciones`;
     document.getElementById("previewId").textContent = `ID: ${receta.id}`;
     
@@ -211,11 +213,12 @@ function mostrarVistaPrevia(receta) {
     // Llenar pasos
     const pasosContainer = document.getElementById("previewPasos");
     pasosContainer.innerHTML = "";
-    receta.pasos.forEach(paso => {
+
+    receta.pasos.forEach((paso, index) => {
         const div = document.createElement("div");
         div.classList.add("paso-preview");
         div.innerHTML = `
-            <div class="paso-numero">${paso.numero}</div>
+            <div class="paso-numero">${index + 1}</div>
             <p>${paso.descripcion}</p>
         `;
         pasosContainer.appendChild(div);
@@ -247,18 +250,80 @@ function eliminarReceta() {
     if (confirmacion) {
         // Eliminar de la lista en memoria
         recetas = recetas.filter(r => r.id !== recetaSeleccionada.id);
-        
+
+        //Eliminar receta
+        eliminarRecetaXML(recetaSeleccionada.id);
+
+        // Cargamos nuevamente
+        cargarXML();
+
         // Actualizar lista visual
         mostrarListaRecetas();
         
         // Limpiar vista previa
         limpiarVistaPrevia();
         
-        // Mostrar mensaje de éxito
-        alert(`La receta "${recetaSeleccionada.nombre}" ha sido eliminada correctamente`);
-        
-        // Nota: Aquí deberías implementar la lógica para guardar los cambios en el XML
-        // Por ejemplo, enviando los datos al servidor mediante fetch/AJAX
-        console.log("Receta eliminada:", recetaSeleccionada.id);
+    }
+}
+
+async function eliminarRecetaXML(idReceta) {
+    const NS = "http://www.recetas.com"; // Namespace principal
+
+    try {
+        // 1️⃣ Cargar el XML existente
+        const response = await fetch("../data/recetario.xml");
+        if (!response.ok) throw new Error("No se pudo cargar el XML");
+
+        const xmlText = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+
+        if (xmlDoc.getElementsByTagName("parsererror").length > 0) {
+            throw new Error("Error al analizar el XML");
+        }
+
+        // 2️⃣ Buscar la receta por su id y eliminarla
+        const recetas = xmlDoc.getElementsByTagNameNS(NS, "receta");
+        let recetaEncontrada = false;
+
+        for (let i = 0; i < recetas.length; i++) {
+            if (recetas[i].getAttribute("id") === idReceta) {
+                recetas[i].parentNode.removeChild(recetas[i]);
+                recetaEncontrada = true;
+                break;
+            }
+        }
+
+        if (!recetaEncontrada) {
+            alert("No se encontró la receta con id: " + idReceta);
+            return;
+        }
+
+        // 3️⃣ Reasignar IDs consecutivos r001, r002, r003...
+        const recetasRestantes = xmlDoc.getElementsByTagNameNS(NS, "receta");
+        for (let i = 0; i < recetasRestantes.length; i++) {
+            const nuevoId = "r" + String(i + 1).padStart(3, "0");
+            recetasRestantes[i].setAttribute("id", nuevoId);
+        }
+
+        // 4️⃣ Convertir a string para enviar o guardar
+        const serializer = new XMLSerializer();
+        const nuevoXMLString = serializer.serializeToString(xmlDoc);
+
+        console.log(nuevoXMLString);
+
+        // 5️⃣ Enviar al servidor para guardar los cambios
+        const respuesta = await fetch("../backend/guardar_recetario.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/xml" },
+            body: nuevoXMLString
+        });
+        const mensaje = await respuesta.text();
+
+        alert(mensaje);
+
+    } catch (error) {
+        console.error("Error eliminando la receta:", error);
+        alert("Ocurrió un error al eliminar la receta. Revisa la consola.");
     }
 }

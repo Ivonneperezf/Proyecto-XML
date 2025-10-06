@@ -12,5 +12,5 @@ $dom->loadXML($xml);
 $dom->save("../data/recetario.xml");
 
 // 4️⃣ Responder al cliente
-echo "Receta guardada correctamente";
+echo "Tarea realizada correctamente";
 ?>

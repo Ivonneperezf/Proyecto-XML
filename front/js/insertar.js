@@ -156,6 +156,7 @@ function validar_entradas(event) {
     const pasosContainer = document.getElementById("pasosContainer");
     if (pasosContainer) pasosContainer.innerHTML = "";
 
+    cargarXML();
     return true;
 }
 
@@ -380,4 +381,5 @@ function limpiar_formulario() {
     const pasosContainer = document.getElementById("pasosContainer");
     ingredientesContainer.innerHTML = "";
     pasosContainer.innerHTML = "";
+    cargarXML();
 }
