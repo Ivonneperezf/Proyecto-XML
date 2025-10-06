@@ -1,504 +1,514 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="recetario.xsl"?>
-<recetario xmlns="http://www.recetas.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.recetas.com recetario.xsd">
-  <!-- Receta 1-->
-  <receta id="r001" categoria="Postre" dificultad="Media">
-    <nombre>Pastel de Chocolate</nombre>
-    <descripcion>Delicioso pastel de chocolate esponjoso y húmedo.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="200" unidad="g">Harina</ingrediente>
-      <ingrediente cantidad="100" unidad="g">Cacao en polvo</ingrediente>
-      <ingrediente cantidad="150" unidad="g">Azúcar</ingrediente>
-      <ingrediente cantidad="3" unidad="u">Huevos</ingrediente>
-      <ingrediente cantidad="100" unidad="ml">Leche</ingrediente>
-      <ingrediente cantidad="100" unidad="g">Mantequilla</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Precalentar el horno a 180°C.</paso>
-      <paso orden="2">Mezclar los ingredientes secos.</paso>
-      <paso orden="3">Añadir los ingredientes líquidos y mezclar bien.</paso>
-      <paso orden="4">Verter la mezcla en un molde engrasado.</paso>
-      <paso orden="5">Hornear durante 30 minutos.</paso>
-    </preparacion>
-    <tiempo total="60" unidad="minutos"/>
-    <porciones cantidad="8"/>
-    <video url="https://youtu.be/n4gHFwKEJ2Y"/>
-    <enlace url="https://www.recetasnestle.com.mx/recetas/pastel-chocolate"/>
-    <notas>Se puede decorar con frutas o crema batida.</notas>
-  </receta>
-  <!-- Receta 2-->
-  <receta id="r002" categoria="Entrada" dificultad="Baja">
-    <nombre>Ensalada César</nombre>
-    <descripcion>Clásica ensalada con lechuga, pollo y aderezo César.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="200" unidad="g">Pechuga de pollo</ingrediente>
-      <ingrediente cantidad="150" unidad="g">Lechuga romana</ingrediente>
-      <ingrediente cantidad="50" unidad="g">Queso parmesano</ingrediente>
-      <ingrediente cantidad="50" unidad="g">Crutones</ingrediente>
-      <ingrediente cantidad="100" unidad="ml">Aderezo César</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Cocinar la pechuga de pollo y cortarla en tiras.</paso>
-      <paso orden="2">Lavar y cortar la lechuga.</paso>
-      <paso orden="3">Mezclar todos los ingredientes en un bol.</paso>
-      <paso orden="4">Añadir el aderezo y mezclar bien.</paso>
-    </preparacion>
-    <tiempo total="20" unidad="minutos"/>
-    <porciones cantidad="4"/>
-    <video url="https://youtu.be/ef-gPM9UcRo"/>
-    <enlace url="https://diegodoal.com/recetas/ensalada-cesar"/>
-    <notas>Se puede añadir pollo a la parrilla para más sabor.</notas>
-  </receta>
-  <!-- Receta 3-->
-  <receta id="r003" categoria="Plato Principal" dificultad="Alta">
-    <nombre>Paella Valenciana</nombre>
-    <descripcion>Tradicional paella con mariscos y arroz.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="500" unidad="g">Arroz</ingrediente>
-      <ingrediente cantidad="200" unidad="g">Mariscos surtidos</ingrediente>
-      <ingrediente cantidad="100" unidad="g">Guisantes</ingrediente>
-      <ingrediente cantidad="1" unidad="u">Pimiento rojo</ingrediente>
-      <ingrediente cantidad="2" unidad="u">Tomates</ingrediente>
-      <ingrediente cantidad="1" unidad="u">Cebolla</ingrediente>
-      <ingrediente cantidad="1" unidad="u">Diente de ajo</ingrediente>
-      <ingrediente cantidad="1" unidad="l">Caldo de pescado</ingrediente>
-      <ingrediente cantidad="1" unidad="cucharadita">Azafrán</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Sofreír la cebolla, ajo y pimiento.</paso>
-      <paso orden="2">Añadir los tomates y cocinar hasta que estén blandos.</paso>
-      <paso orden="3">Incorporar los mariscos y el arroz.</paso>
-      <paso orden="4">Verter el caldo caliente y añadir el azafrán.</paso>
-      <paso orden="5">Cocinar a fuego medio hasta que el arroz esté en su punto.</paso>
-    </preparacion>
-    <tiempo total="90" unidad="minutos"/>
-    <porciones cantidad="6"/>
-    <video url="https://youtu.be/zrSyyNugKYo"/>
-    <enlace url="https://www.directoalpaladar.com/recetas-de-arroces/paella-valenciana-receta-tradicional"/>
-    <notas>Es importante no remover el arroz durante la cocción.</notas>
-  </receta>
-  <!-- Receta 4-->
-  <receta id="r004" categoria="Postre" dificultad="Baja">
-    <nombre>Flan Casero</nombre>
-    <descripcion>Flan suave y cremoso con caramelo.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="500" unidad="ml">Leche</ingrediente>
-      <ingrediente cantidad="100" unidad="g">Azúcar</ingrediente>
-      <ingrediente cantidad="4" unidad="u">Huevos</ingrediente>
-      <ingrediente cantidad="1" unidad="cucharadita">Esencia de vainilla</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Caramelizar el azúcar en un molde apto para horno.</paso>
-      <paso orden="2">Batir los huevos con el azúcar y la esencia de vainilla.</paso>
-      <paso orden="3">Añadir la leche caliente a la mezcla de huevos.</paso>
-      <paso orden="4">Verter la mezcla en el molde caramelizado.</paso>
-      <paso orden="5">Cocinar al baño maría en el horno durante 45 minutos.</paso>
-    </preparacion>
-    <tiempo total="60" unidad="minutos"/>
-    <porciones cantidad="6"/>
-    <video url="https://youtu.be/WfDpQBkCUXo"/>
-    <enlace url="https://www.goodnes.com/es/la-lechera/recetas/flan-tradicional/"/>
-    <notas>Dejar enfriar completamente antes de desmoldar.</notas>
-  </receta>
-  <!-- Receta 5-->
-  <receta id="r005" categoria="Bebida" dificultad="Baja">
-    <nombre>Batido de Fresas</nombre>
-    <descripcion>Refrescante batido de fresas con leche.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="200" unidad="g">Fresas</ingrediente>
-      <ingrediente cantidad="250" unidad="ml">Leche</ingrediente>
-      <ingrediente cantidad="2" unidad="cucharadas">Azúcar</ingrediente>
-      <ingrediente cantidad="1" unidad="cucharadita">Esencia de vainilla</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Lavar y desinfectar las fresas.</paso>
-      <paso orden="2">Colocar las fresas, leche, azúcar y esencia de vainilla en una licuadora.</paso>
-      <paso orden="3">Licuar hasta obtener una mezcla homogénea.</paso>
-      <paso orden="4">Servir en vasos altos con hielo al gusto.</paso>
-    </preparacion>
-    <tiempo total="10" unidad="minutos"/>
-    <porciones cantidad="2"/>
-    <video url="https://youtu.be/bQoRxGo33bE"/>
-    <enlace url="https://www.recetasnestle.com.mx/recetas/batido-de-fresa"/>
-    <notas>Se puede añadir un poco de crema batida por encima.</notas>
-  </receta>
-  <!-- Receta 6 -->
-  <receta id="r006" categoria="Entrada" dificultad="Baja">
-    <nombre>Guacamole</nombre>
-    <descripcion>Delicioso guacamole tradicional mexicano.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="2" unidad="pieza">Aguacates maduros</ingrediente>
-      <ingrediente cantidad="1" unidad="pieza">Cebolla morada</ingrediente>
-      <ingrediente cantidad="1" unidad="pieza">Jitomate</ingrediente>
-      <ingrediente cantidad="1" unidad="pieza">Chile serrano</ingrediente>
-      <ingrediente cantidad="5" unidad="g">Cilantro fresco</ingrediente>
-      <ingrediente cantidad="5" unidad="g">Sal</ingrediente>
-      <ingrediente cantidad="10" unidad="ml">Jugo de limón</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Pelar y triturar los aguacates en un bol.</paso>
-      <paso orden="2">Picar finamente la cebolla, jitomate, chile y cilantro.</paso>
-      <paso orden="3">Mezclar todos los ingredientes con el aguacate.</paso>
-      <paso orden="4">Añadir sal y jugo de limón al gusto.</paso>
-    </preparacion>
-    <tiempo total="10" unidad="minutos"/>
-    <porciones cantidad="4"/>
-    <video url="https://youtu.be/oidUrWmke4g"/>
-    <enlace url="https://www.directoalpaladar.com/recetas-vegetarianas/como-hacer-guacamole-en-casa-receta"/>
-    <notas>Puedes acompañarlo con totopos o tacos.</notas>
-  </receta>
-  <!-- Receta 7 -->
-  <receta id="r007" categoria="Plato Principal" dificultad="Media">
-    <nombre>Tacos al Pastor</nombre>
-    <descripcion>Tacos al pastor con piña y cilantro.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="500" unidad="g">Carne de cerdo</ingrediente>
-      <ingrediente cantidad="100" unidad="g">Piña</ingrediente>
-      <ingrediente cantidad="8" unidad="pieza">Tortillas de maíz</ingrediente>
-      <ingrediente cantidad="5" unidad="g">Cilantro fresco</ingrediente>
-      <ingrediente cantidad="1" unidad="pieza">Cebolla</ingrediente>
-      <ingrediente cantidad="10" unidad="ml">Jugo de limón</ingrediente>
-      <ingrediente cantidad="5" unidad="g">Sal</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Marinar la carne con achiote y especias durante 2 horas.</paso>
-      <paso orden="2">Cocinar la carne en sartén o trompo.</paso>
-      <paso orden="3">Picar cebolla, cilantro y piña.</paso>
-      <paso orden="4">Servir la carne sobre tortillas y agregar los toppings.</paso>
-    </preparacion>
-    <tiempo total="120" unidad="minutos"/>
-    <porciones cantidad="4"/>
-    <video url="https://youtu.be/VPvBJloi5FU"/>
-    <enlace url="https://www.mexicoenmicocina.com/receta-tacos-al-pastor/"/>
-    <notas>Se pueden acompañar con salsa roja o verde.</notas>
-  </receta>
-  <!-- Receta 8 -->
-  <receta id="r008" categoria="Postre" dificultad="Media">
-    <nombre>Churros con Chocolate</nombre>
-    <descripcion>Crujientes churros mexicanos con chocolate caliente.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="250" unidad="g">Harina de trigo</ingrediente>
-      <ingrediente cantidad="250" unidad="ml">Agua</ingrediente>
-      <ingrediente cantidad="50" unidad="g">Azúcar</ingrediente>
-      <ingrediente cantidad="5" unidad="g">Sal</ingrediente>
-      <ingrediente cantidad="50" unidad="g">Mantequilla</ingrediente>
-      <ingrediente cantidad="200" unidad="ml">Chocolate para derretir</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Hervir agua con sal y mantequilla.</paso>
-      <paso orden="2">Agregar la harina y mezclar hasta formar masa.</paso>
-      <paso orden="3">Formar churros y freír hasta dorar.</paso>
-      <paso orden="4">Servir con chocolate derretido.</paso>
-    </preparacion>
-    <tiempo total="45" unidad="minutos"/>
-    <porciones cantidad="4"/>
-    <video url="https://youtu.be/96pbq9pRaDo"/>
-    <enlace url="https://www.recetasnestle.com.mx/recetas/churros-con-salsa-de-chocolate"/>
-    <notas>Puedes espolvorear azúcar con canela sobre los churros.</notas>
-  </receta>
-  <!-- Receta 9 -->
-  <receta id="r009" categoria="Plato Principal" dificultad="Alta">
-    <nombre>Enchiladas Verdes</nombre>
-    <descripcion>Enchiladas rellenas de pollo bañadas en salsa verde.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="8" unidad="pieza">Tortillas de maíz</ingrediente>
-      <ingrediente cantidad="300" unidad="g">Pollo deshebrado</ingrediente>
-      <ingrediente cantidad="200" unidad="g">Tomatillos</ingrediente>
-      <ingrediente cantidad="2" unidad="pieza">Chiles serranos</ingrediente>
-      <ingrediente cantidad="50" unidad="g">Cilantro</ingrediente>
-      <ingrediente cantidad="5" unidad="g">Sal</ingrediente>
-      <ingrediente cantidad="100" unidad="ml">Crema</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Hervir tomatillos y chiles, licuar con cilantro y sal.</paso>
-      <paso orden="2">Rellenar tortillas con pollo y enrollar.</paso>
-      <paso orden="3">Cubrir con salsa verde y calentar en horno.</paso>
-      <paso orden="4">Servir con crema por encima.</paso>
-    </preparacion>
-    <tiempo total="60" unidad="minutos"/>
-    <porciones cantidad="4"/>
-    <video url="https://youtu.be/SiKY5Im2FGo"/>
-    <enlace url="https://www.recetasnestle.com.mx/recetas/enchiladas-verdes-cremosas"/>
-    <notas>Se pueden acompañar con queso fresco rallado.</notas>
-  </receta>
-  <!-- Receta 10 -->
-  <receta id="r010" categoria="Bebida" dificultad="Baja">
-    <nombre>Agua de Jamaica</nombre>
-    <descripcion>Refrescante bebida de flor de jamaica con un toque de limón.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="50" unidad="g">Flor de jamaica seca</ingrediente>
-      <ingrediente cantidad="1" unidad="l">Agua</ingrediente>
-      <ingrediente cantidad="50" unidad="g">Azúcar</ingrediente>
-      <ingrediente cantidad="10" unidad="ml">Jugo de limón</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Hervir agua y agregar la flor de jamaica.</paso>
-      <paso orden="2">Dejar reposar 10 minutos y colar.</paso>
-      <paso orden="3">Añadir azúcar y jugo de limón, mezclar bien.</paso>
-      <paso orden="4">Servir fría con hielo.</paso>
-    </preparacion>
-    <tiempo total="15" unidad="minutos"/>
-    <porciones cantidad="4"/>
-    <video url="https://youtu.be/RWmm1b_H6SU"/>
-    <enlace url="https://laroussecocina.mx/receta/agua-de-jamaica/"/>
-    <notas>Puedes ajustar el azúcar según tu preferencia.</notas>
-  </receta>
-  <!-- Receta 11 -->
-  <receta id="r011" categoria="Postre" dificultad="Media">
-    <nombre>Tiramisu Italiano</nombre>
-    <descripcion>Clásico postre italiano con capas de bizcocho, café y mascarpone.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="200" unidad="g">Bizcochos de soletilla</ingrediente>
-      <ingrediente cantidad="250" unidad="g">Queso mascarpone</ingrediente>
-      <ingrediente cantidad="100" unidad="g">Azúcar</ingrediente>
-      <ingrediente cantidad="200" unidad="ml">Café espresso frío</ingrediente>
-      <ingrediente cantidad="30" unidad="g">Cacao en polvo</ingrediente>
-      <ingrediente cantidad="2" unidad="u">Huevos</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Separar claras y yemas de los huevos, batir las yemas con azúcar.</paso>
-      <paso orden="2">Añadir mascarpone a las yemas y mezclar.</paso>
-      <paso orden="3">Batir las claras a punto de nieve e incorporar suavemente.</paso>
-      <paso orden="4">Remojar los bizcochos en café y colocar capas alternando con la crema.</paso>
-      <paso orden="5">Refrigerar 4 horas y espolvorear cacao antes de servir.</paso>
-    </preparacion>
-    <tiempo total="300" unidad="minutos"/>
-    <porciones cantidad="6"/>
-    <video url="https://youtu.be/Z2ql_eRRAtQ"/>
-    <enlace url="https://galbani.es/recetas/tiramisu/receta-original-italiana/"/>
-    <notas>Se puede añadir licor de café para un sabor más intenso.</notas>
-  </receta>
-  <!-- Receta 12 -->
-  <receta id="r012" categoria="Plato Principal" dificultad="Media">
-    <nombre>Curry de Pollo Indio</nombre>
-    <descripcion>Pollo cocinado en una salsa cremosa con especias tradicionales indias.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="500" unidad="g">Pechuga de pollo</ingrediente>
-      <ingrediente cantidad="200" unidad="ml">Leche de coco</ingrediente>
-      <ingrediente cantidad="1" unidad="pieza">Cebolla</ingrediente>
-      <ingrediente cantidad="2" unidad="dientes">Ajo</ingrediente>
-      <ingrediente cantidad="10" unidad="g">Pasta de curry</ingrediente>
-      <ingrediente cantidad="5" unidad="g">Cilantro fresco</ingrediente>
-      <ingrediente cantidad="5" unidad="g">Sal</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Sofreír cebolla y ajo picados hasta dorar.</paso>
-      <paso orden="2">Agregar pasta de curry y cocinar 2 minutos.</paso>
-      <paso orden="3">Incorporar pollo cortado en cubos y sellar la carne.</paso>
-      <paso orden="4">Añadir leche de coco y cocinar a fuego lento 20 minutos.</paso>
-      <paso orden="5">Servir con cilantro fresco picado encima y arroz blanco.</paso>
-    </preparacion>
-    <tiempo total="45" unidad="minutos"/>
-    <porciones cantidad="4"/>
-    <video url="https://youtu.be/o_PniN2lq4k"/>
-    <enlace url="https://www.recetasgratis.net/receta-de-pollo-al-curry-hindu-facil-72314.html"/>
-    <notas>Se puede ajustar la cantidad de pasta de curry según el picante deseado.</notas>
-  </receta>
-  <!-- Receta 13 -->
-  <receta id="r013" categoria="Bebida" dificultad="Baja">
-    <nombre>Smoothie de Mango y Plátano</nombre>
-    <descripcion>Bebida tropical refrescante con mango y plátano.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="1" unidad="pieza">Mango maduro</ingrediente>
-      <ingrediente cantidad="1" unidad="pieza">Plátano</ingrediente>
-      <ingrediente cantidad="200" unidad="ml">Leche</ingrediente>
-      <ingrediente cantidad="2" unidad="cucharadas">Miel</ingrediente>
-      <ingrediente cantidad="5" unidad="g">Hielo</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Pelar y cortar el mango y plátano en trozos.</paso>
-      <paso orden="2">Licuar con leche, miel y hielo hasta obtener mezcla homogénea.</paso>
-      <paso orden="3">Servir inmediatamente en vasos altos.</paso>
-    </preparacion>
-    <tiempo total="10" unidad="minutos"/>
-    <porciones cantidad="2"/>
-    <video url="https://youtu.be/invDlb5wulI"/>
-    <enlace url="https://www.recetasnestle.com.mx/recetas/smoothie-mango-y-platano"/>
-    <notas>Se puede añadir un poco de yogur natural para mayor cremosidad.</notas>
-  </receta>
-  <!-- Receta 14 -->
-  <receta id="r014" categoria="Postre" dificultad="Media">
-    <nombre>Panna Cotta con Frutos Rojos</nombre>
-    <descripcion>Postre italiano suave acompañado de salsa de frutos rojos.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="500" unidad="ml">Crema de leche</ingrediente>
-      <ingrediente cantidad="100" unidad="g">Azúcar</ingrediente>
-      <ingrediente cantidad="1" unidad="cucharadita">Esencia de vainilla</ingrediente>
-      <ingrediente cantidad="5" unidad="g">Gelatina en polvo</ingrediente>
-      <ingrediente cantidad="100" unidad="g">Frutos rojos</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Hidratar la gelatina en un poco de agua fría.</paso>
-      <paso orden="2">Calentar la crema con azúcar y vainilla, sin hervir.</paso>
-      <paso orden="3">Añadir la gelatina disuelta y mezclar bien.</paso>
-      <paso orden="4">Verter en moldes y refrigerar al menos 4 horas.</paso>
-      <paso orden="5">Servir con frutos rojos por encima.</paso>
-    </preparacion>
-    <tiempo total="270" unidad="minutos"/>
-    <porciones cantidad="4"/>
-    <video url="https://youtu.be/1o-he-xpa74"/>
-    <enlace url="https://www.cookwithbelula.com/es/receta/panacota-salsa-frutos-rojos"/>
-    <notas>Se puede acompañar con un toque de menta fresca.</notas>
-  </receta>
-  <!-- Receta 15 -->
-  <receta id="r015" categoria="Plato Principal" dificultad="Alta">
-    <nombre>Ratatouille Francés</nombre>
-    <descripcion>Plato francés de verduras al horno en capas finas y coloridas.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="1" unidad="pieza">Berenjena</ingrediente>
-      <ingrediente cantidad="1" unidad="pieza">Calabacín</ingrediente>
-      <ingrediente cantidad="1" unidad="pieza">Pimiento rojo</ingrediente>
-      <ingrediente cantidad="2" unidad="pieza">Tomates</ingrediente>
-      <ingrediente cantidad="1" unidad="pieza">Cebolla</ingrediente>
-      <ingrediente cantidad="2" unidad="dientes">Ajo</ingrediente>
-      <ingrediente cantidad="20" unidad="ml">Aceite de oliva</ingrediente>
-      <ingrediente cantidad="5" unidad="g">Sal</ingrediente>
-      <ingrediente cantidad="5" unidad="g">Hierbas provenzales</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Cortar todas las verduras en rodajas finas.</paso>
-      <paso orden="2">Sofreír cebolla y ajo, luego colocarlos en la base de un molde.</paso>
-      <paso orden="3">Colocar las rodajas de verduras en capas alternadas.</paso>
-      <paso orden="4">Rociar con aceite de oliva, sal y hierbas.</paso>
-      <paso orden="5">Hornear a 180°C durante 45 minutos hasta que estén tiernas.</paso>
-    </preparacion>
-    <tiempo total="60" unidad="minutos"/>
-    <porciones cantidad="4"/>
-    <video url="https://youtu.be/QOxDxjhyyII"/>
-    <enlace url="https://www.bonviveur.es/recetas/ratatouille-casero"/>
-    <notas>Se puede acompañar con queso rallado al gusto.</notas>
-  </receta>
-  <!-- Receta 16 -->
-  <receta id="r016" categoria="Postre" dificultad="Baja">
-    <nombre>Brownies de Chocolate</nombre>
-    <descripcion>Deliciosos brownies húmedos y chocolatosos, fáciles de preparar.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="200" unidad="g">Chocolate negro</ingrediente>
-      <ingrediente cantidad="150" unidad="g">Mantequilla</ingrediente>
-      <ingrediente cantidad="150" unidad="g">Azúcar</ingrediente>
-      <ingrediente cantidad="3" unidad="u">Huevos</ingrediente>
-      <ingrediente cantidad="100" unidad="g">Harina</ingrediente>
-      <ingrediente cantidad="1" unidad="cucharadita">Esencia de vainilla</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Derretir el chocolate con la mantequilla.</paso>
-      <paso orden="2">Batir los huevos con azúcar y añadir el chocolate derretido.</paso>
-      <paso orden="3">Incorporar la harina y la vainilla, mezclar bien.</paso>
-      <paso orden="4">Verter en un molde engrasado y hornear 25-30 minutos a 180°C.</paso>
-    </preparacion>
-    <tiempo total="50" unidad="minutos"/>
-    <porciones cantidad="8"/>
-    <video url="https://youtu.be/dOHShci3KrQ"/>
-    <enlace url="https://recetasdecocina.elmundo.es/2018/03/brownie-chocolate-receta-facil.html"/>
-    <notas>Se pueden añadir nueces o chispas de chocolate para más sabor.</notas>
-  </receta>
-  <!-- Receta 17 -->
-  <receta id="r017" categoria="Plato Principal" dificultad="Media">
-    <nombre>Espagueti a la Boloñesa</nombre>
-    <descripcion>Clásica pasta italiana con salsa de carne y tomate.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="400" unidad="g">Espagueti</ingrediente>
-      <ingrediente cantidad="300" unidad="g">Carne molida</ingrediente>
-      <ingrediente cantidad="1" unidad="pieza">Cebolla</ingrediente>
-      <ingrediente cantidad="2" unidad="dientes">Ajo</ingrediente>
-      <ingrediente cantidad="400" unidad="g">Tomate triturado</ingrediente>
-      <ingrediente cantidad="10" unidad="ml">Aceite de oliva</ingrediente>
-      <ingrediente cantidad="5" unidad="g">Sal</ingrediente>
-      <ingrediente cantidad="5" unidad="g">Pimienta</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Cocinar el espagueti según instrucciones del paquete.</paso>
-      <paso orden="2">Sofreír cebolla y ajo picados en aceite de oliva.</paso>
-      <paso orden="3">Añadir la carne y cocinar hasta dorar.</paso>
-      <paso orden="4">Incorporar el tomate triturado y cocinar 20 minutos a fuego lento.</paso>
-      <paso orden="5">Servir la salsa sobre el espagueti y espolvorear queso rallado.</paso>
-    </preparacion>
-    <tiempo total="45" unidad="minutos"/>
-    <porciones cantidad="4"/>
-    <video url="https://youtu.be/je4morYbxBk"/>
-    <enlace url="https://www.recetasnestle.com.mx/recetas/espagueti-bolonesa"/>
-    <notas>Se puede añadir albahaca fresca para un toque aromático.</notas>
-  </receta>
-  <!-- Receta 18 -->
-  <receta id="r018" categoria="Bebida" dificultad="Baja">
-    <nombre>Limonada Casera</nombre>
-    <descripcion>Bebida refrescante de limón con un toque de azúcar y menta.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="4" unidad="u">Limones</ingrediente>
-      <ingrediente cantidad="1" unidad="l">Agua</ingrediente>
-      <ingrediente cantidad="50" unidad="g">Azúcar</ingrediente>
-      <ingrediente cantidad="5" unidad="g">Hojas de menta</ingrediente>
-      <ingrediente cantidad="5" unidad="g">Hielo</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Exprimir los limones y colar el jugo.</paso>
-      <paso orden="2">Mezclar el jugo con agua y azúcar hasta disolver.</paso>
-      <paso orden="3">Añadir hielo y hojas de menta antes de servir.</paso>
-    </preparacion>
-    <tiempo total="10" unidad="minutos"/>
-    <porciones cantidad="4"/>
-    <video url="https://youtu.be/8Rd9HV8iweU"/>
-    <enlace url="https://www.cocinatis.com/receta/limonada.html"/>
-    <notas>Se puede añadir rodajas de limón para decorar los vasos.</notas>
-  </receta>
-  <!-- Receta 19 -->
-  <receta id="r019" categoria="Entrada" dificultad="Baja">
-    <nombre>Sopa de Verduras</nombre>
-    <descripcion>Sopa ligera con verduras frescas, ideal como entrada saludable.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="1" unidad="pieza">Zanahoria</ingrediente>
-      <ingrediente cantidad="1" unidad="pieza">Calabacín</ingrediente>
-      <ingrediente cantidad="1" unidad="pieza">Papa</ingrediente>
-      <ingrediente cantidad="1" unidad="pieza">Cebolla</ingrediente>
-      <ingrediente cantidad="1" unidad="diente">Ajo</ingrediente>
-      <ingrediente cantidad="1" unidad="l">Agua</ingrediente>
-      <ingrediente cantidad="5" unidad="g">Sal</ingrediente>
-      <ingrediente cantidad="5" unidad="g">Pimienta</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Pelar y cortar todas las verduras en cubos.</paso>
-      <paso orden="2">Sofreír cebolla y ajo picados hasta dorar.</paso>
-      <paso orden="3">Añadir las verduras y el agua, cocinar hasta que estén tiernas.</paso>
-      <paso orden="4">Sazonar con sal y pimienta al gusto.</paso>
-      <paso orden="5">Servir caliente, se puede acompañar con pan tostado.</paso>
-    </preparacion>
-    <tiempo total="35" unidad="minutos"/>
-    <porciones cantidad="4"/>
-    <video url="https://youtu.be/pNMfnNw3Q6A"/>
-    <enlace url="https://www.pizcadesabor.com/sopa-de-verduras/"/>
-    <notas>Se puede añadir un poco de crema o queso rallado al servir.</notas>
-  </receta>
-  <!-- Receta 20 -->
-  <receta id="r020" categoria="Postre" dificultad="Baja">
-    <nombre>Gelatina de Frutas</nombre>
-    <descripcion>Gelatina fácil con frutas frescas de temporada.</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="1" unidad="paquete">Gelatina sabor fresa</ingrediente>
-      <ingrediente cantidad="500" unidad="ml">Agua</ingrediente>
-      <ingrediente cantidad="100" unidad="g">Frutas variadas</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">Preparar la gelatina según instrucciones del paquete.</paso>
-      <paso orden="2">Dejar enfriar un poco y añadir las frutas cortadas.</paso>
-      <paso orden="3">Refrigerar hasta que cuaje completamente.</paso>
-      <paso orden="4">Servir fría como postre refrescante.</paso>
-    </preparacion>
-    <tiempo total="180" unidad="minutos"/>
-    <porciones cantidad="6"/>
-    <video url="https://youtu.be/86y1SU5sIGo"/>
-    <enlace url="https://www.lazayafruits.com/es/blog-de-frutas-en-conserva/como-hacer-gelatina-de-frutas-casera/"/>
-    <notas>Se pueden usar frutas al gusto según la temporada.</notas>
-  </receta>
-  <receta id="r021" categoria="Plato Principal" dificultad="Media">
-    <nombre>afas</nombre>
-    <descripcion>asfja</descripcion>
-    <ingredientes>
-      <ingrediente cantidad="23" unidad="fdg">asf</ingrediente>
-    </ingredientes>
-    <preparacion>
-      <paso orden="1">sdgsd</paso>
-    </preparacion>
-    <tiempo total="20" unidad="minutos"/>
-    <porciones cantidad="4"/>
-  </receta>
+<recetario xmlns="http://www.recetas.com"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.recetas.com recetario.xsd">
+    <!-- Receta 1-->
+    <receta id="r001" categoria="Postre" dificultad="Media">
+        <nombre>Pastel de Chocolate</nombre>
+        <descripcion>Delicioso pastel de chocolate esponjoso y húmedo.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="200" unidad="g">Harina</ingrediente>
+            <ingrediente cantidad="100" unidad="g">Cacao en polvo</ingrediente>
+            <ingrediente cantidad="150" unidad="g">Azúcar</ingrediente>
+            <ingrediente cantidad="3" unidad="u">Huevos</ingrediente>
+            <ingrediente cantidad="100" unidad="ml">Leche</ingrediente>
+            <ingrediente cantidad="100" unidad="g">Mantequilla</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Precalentar el horno a 180°C.</paso>
+            <paso orden="2">Mezclar los ingredientes secos.</paso>
+            <paso orden="3">Añadir los ingredientes líquidos y mezclar bien.</paso>
+            <paso orden="4">Verter la mezcla en un molde engrasado.</paso>
+            <paso orden="5">Hornear durante 30 minutos.</paso>
+        </preparacion>
+        <tiempo total="60" unidad="minutos"/>
+        <porciones cantidad="8"/>
+        <video url="https://youtu.be/n4gHFwKEJ2Y"/>
+        <enlace url="https://www.recetasnestle.com.mx/recetas/pastel-chocolate"/>
+        <notas>Se puede decorar con frutas o crema batida.</notas>
+    </receta>
+
+    <!-- Receta 2-->
+    <receta id="r002" categoria="Entrada" dificultad="Baja">
+        <nombre>Ensalada César</nombre>
+        <descripcion>Clásica ensalada con lechuga, pollo y aderezo César.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="200" unidad="g">Pechuga de pollo</ingrediente>
+            <ingrediente cantidad="150" unidad="g">Lechuga romana</ingrediente>
+            <ingrediente cantidad="50" unidad="g">Queso parmesano</ingrediente>
+            <ingrediente cantidad="50" unidad="g">Crutones</ingrediente>
+            <ingrediente cantidad="100" unidad="ml">Aderezo César</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Cocinar la pechuga de pollo y cortarla en tiras.</paso>
+            <paso orden="2">Lavar y cortar la lechuga.</paso>
+            <paso orden="3">Mezclar todos los ingredientes en un bol.</paso>
+            <paso orden="4">Añadir el aderezo y mezclar bien.</paso>
+        </preparacion>
+        <tiempo total="20" unidad="minutos"/>
+        <porciones cantidad="4"/>
+        <video url="https://youtu.be/ef-gPM9UcRo"/>
+        <enlace url="https://diegodoal.com/recetas/ensalada-cesar"/>
+        <notas>Se puede añadir pollo a la parrilla para más sabor.</notas>
+    </receta>
+
+    <!-- Receta 3-->
+    <receta id="r003" categoria="Plato Principal" dificultad="Alta">
+        <nombre>Paella Valenciana</nombre>
+        <descripcion>Tradicional paella con mariscos y arroz.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="500" unidad="g">Arroz</ingrediente>
+            <ingrediente cantidad="200" unidad="g">Mariscos surtidos</ingrediente>
+            <ingrediente cantidad="100" unidad="g">Guisantes</ingrediente>
+            <ingrediente cantidad="1" unidad="u">Pimiento rojo</ingrediente>
+            <ingrediente cantidad="2" unidad="u">Tomates</ingrediente>
+            <ingrediente cantidad="1" unidad="u">Cebolla</ingrediente>
+            <ingrediente cantidad="1" unidad="u">Diente de ajo</ingrediente>
+            <ingrediente cantidad="1" unidad="l">Caldo de pescado</ingrediente>
+            <ingrediente cantidad="1" unidad="cucharadita">Azafrán</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Sofreír la cebolla, ajo y pimiento.</paso>
+            <paso orden="2">Añadir los tomates y cocinar hasta que estén blandos.</paso>
+            <paso orden="3">Incorporar los mariscos y el arroz.</paso>
+            <paso orden="4">Verter el caldo caliente y añadir el azafrán.</paso>
+            <paso orden="5">Cocinar a fuego medio hasta que el arroz esté en su punto.</paso>
+        </preparacion>
+        <tiempo total="90" unidad="minutos"/>
+        <porciones cantidad="6"/>
+        <video url="https://youtu.be/zrSyyNugKYo"/>
+        <enlace url="https://www.directoalpaladar.com/recetas-de-arroces/paella-valenciana-receta-tradicional"/>
+        <notas>Es importante no remover el arroz durante la cocción.</notas>
+    </receta>
+
+    <!-- Receta 4-->
+    <receta id="r004" categoria="Postre" dificultad="Baja">
+        <nombre>Flan Casero</nombre>
+        <descripcion>Flan suave y cremoso con caramelo.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="500" unidad="ml">Leche</ingrediente>
+            <ingrediente cantidad="100" unidad="g">Azúcar</ingrediente>
+            <ingrediente cantidad="4" unidad="u">Huevos</ingrediente>
+            <ingrediente cantidad="1" unidad="cucharadita">Esencia de vainilla</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Caramelizar el azúcar en un molde apto para horno.</paso>
+            <paso orden="2">Batir los huevos con el azúcar y la esencia de vainilla.</paso>
+            <paso orden="3">Añadir la leche caliente a la mezcla de huevos.</paso>
+            <paso orden="4">Verter la mezcla en el molde caramelizado.</paso>
+            <paso orden="5">Cocinar al baño maría en el horno durante 45 minutos.</paso>
+        </preparacion>
+        <tiempo total="60" unidad="minutos"/>
+        <porciones cantidad="6"/>
+        <video url="https://youtu.be/WfDpQBkCUXo"/>
+        <enlace url="https://www.goodnes.com/es/la-lechera/recetas/flan-tradicional/"/>
+        <notas>Dejar enfriar completamente antes de desmoldar.</notas>
+    </receta>
+
+    <!-- Receta 5-->
+    <receta id="r005" categoria="Bebida" dificultad="Baja">
+        <nombre>Batido de Fresas</nombre>
+        <descripcion>Refrescante batido de fresas con leche.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="200" unidad="g">Fresas</ingrediente>
+            <ingrediente cantidad="250" unidad="ml">Leche</ingrediente>
+            <ingrediente cantidad="2" unidad="cucharadas">Azúcar</ingrediente>
+            <ingrediente cantidad="1" unidad="cucharadita">Esencia de vainilla</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Lavar y desinfectar las fresas.</paso>
+            <paso orden="2">Colocar las fresas, leche, azúcar y esencia de vainilla en una licuadora.</paso>
+            <paso orden="3">Licuar hasta obtener una mezcla homogénea.</paso>
+            <paso orden="4">Servir en vasos altos con hielo al gusto.</paso>
+        </preparacion>
+        <tiempo total="10" unidad="minutos"/>
+        <porciones cantidad="2"/>
+        <video url="https://youtu.be/bQoRxGo33bE"/>
+        <enlace url="https://www.recetasnestle.com.mx/recetas/batido-de-fresa"/>
+        <notas>Se puede añadir un poco de crema batida por encima.</notas>
+    </receta>
+
+    <!-- Receta 6 -->
+    <receta id="r006" categoria="Entrada" dificultad="Baja">
+        <nombre>Guacamole</nombre>
+        <descripcion>Delicioso guacamole tradicional mexicano.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="2" unidad="pieza">Aguacates maduros</ingrediente>
+            <ingrediente cantidad="1" unidad="pieza">Cebolla morada</ingrediente>
+            <ingrediente cantidad="1" unidad="pieza">Jitomate</ingrediente>
+            <ingrediente cantidad="1" unidad="pieza">Chile serrano</ingrediente>
+            <ingrediente cantidad="5" unidad="g">Cilantro fresco</ingrediente>
+            <ingrediente cantidad="5" unidad="g">Sal</ingrediente>
+            <ingrediente cantidad="10" unidad="ml">Jugo de limón</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Pelar y triturar los aguacates en un bol.</paso>
+            <paso orden="2">Picar finamente la cebolla, jitomate, chile y cilantro.</paso>
+            <paso orden="3">Mezclar todos los ingredientes con el aguacate.</paso>
+            <paso orden="4">Añadir sal y jugo de limón al gusto.</paso>
+        </preparacion>
+        <tiempo total="10" unidad="minutos"/>
+        <porciones cantidad="4"/>
+        <video url="https://youtu.be/oidUrWmke4g"/>
+        <enlace url="https://www.directoalpaladar.com/recetas-vegetarianas/como-hacer-guacamole-en-casa-receta"/>
+        <notas>Puedes acompañarlo con totopos o tacos.</notas>
+    </receta>
+
+    <!-- Receta 7 -->
+    <receta id="r007" categoria="Plato Principal" dificultad="Media">
+        <nombre>Tacos al Pastor</nombre>
+        <descripcion>Tacos al pastor con piña y cilantro.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="500" unidad="g">Carne de cerdo</ingrediente>
+            <ingrediente cantidad="100" unidad="g">Piña</ingrediente>
+            <ingrediente cantidad="8" unidad="pieza">Tortillas de maíz</ingrediente>
+            <ingrediente cantidad="5" unidad="g">Cilantro fresco</ingrediente>
+            <ingrediente cantidad="1" unidad="pieza">Cebolla</ingrediente>
+            <ingrediente cantidad="10" unidad="ml">Jugo de limón</ingrediente>
+            <ingrediente cantidad="5" unidad="g">Sal</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Marinar la carne con achiote y especias durante 2 horas.</paso>
+            <paso orden="2">Cocinar la carne en sartén o trompo.</paso>
+            <paso orden="3">Picar cebolla, cilantro y piña.</paso>
+            <paso orden="4">Servir la carne sobre tortillas y agregar los toppings.</paso>
+        </preparacion>
+        <tiempo total="120" unidad="minutos"/>
+        <porciones cantidad="4"/>
+        <video url="https://youtu.be/VPvBJloi5FU"/>
+        <enlace url="https://www.mexicoenmicocina.com/receta-tacos-al-pastor/"/>
+        <notas>Se pueden acompañar con salsa roja o verde.</notas>
+    </receta>
+
+    <!-- Receta 8 -->
+    <receta id="r008" categoria="Postre" dificultad="Media">
+        <nombre>Churros con Chocolate</nombre>
+        <descripcion>Crujientes churros mexicanos con chocolate caliente.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="250" unidad="g">Harina de trigo</ingrediente>
+            <ingrediente cantidad="250" unidad="ml">Agua</ingrediente>
+            <ingrediente cantidad="50" unidad="g">Azúcar</ingrediente>
+            <ingrediente cantidad="5" unidad="g">Sal</ingrediente>
+            <ingrediente cantidad="50" unidad="g">Mantequilla</ingrediente>
+            <ingrediente cantidad="200" unidad="ml">Chocolate para derretir</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Hervir agua con sal y mantequilla.</paso>
+            <paso orden="2">Agregar la harina y mezclar hasta formar masa.</paso>
+            <paso orden="3">Formar churros y freír hasta dorar.</paso>
+            <paso orden="4">Servir con chocolate derretido.</paso>
+        </preparacion>
+        <tiempo total="45" unidad="minutos"/>
+        <porciones cantidad="4"/>
+        <video url="https://youtu.be/96pbq9pRaDo"/>
+        <enlace url="https://www.recetasnestle.com.mx/recetas/churros-con-salsa-de-chocolate"/>
+        <notas>Puedes espolvorear azúcar con canela sobre los churros.</notas>
+    </receta>
+
+    <!-- Receta 9 -->
+    <receta id="r009" categoria="Plato Principal" dificultad="Alta">
+        <nombre>Enchiladas Verdes</nombre>
+        <descripcion>Enchiladas rellenas de pollo bañadas en salsa verde.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="8" unidad="pieza">Tortillas de maíz</ingrediente>
+            <ingrediente cantidad="300" unidad="g">Pollo deshebrado</ingrediente>
+            <ingrediente cantidad="200" unidad="g">Tomatillos</ingrediente>
+            <ingrediente cantidad="2" unidad="pieza">Chiles serranos</ingrediente>
+            <ingrediente cantidad="50" unidad="g">Cilantro</ingrediente>
+            <ingrediente cantidad="5" unidad="g">Sal</ingrediente>
+            <ingrediente cantidad="100" unidad="ml">Crema</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Hervir tomatillos y chiles, licuar con cilantro y sal.</paso>
+            <paso orden="2">Rellenar tortillas con pollo y enrollar.</paso>
+            <paso orden="3">Cubrir con salsa verde y calentar en horno.</paso>
+            <paso orden="4">Servir con crema por encima.</paso>
+        </preparacion>
+        <tiempo total="60" unidad="minutos"/>
+        <porciones cantidad="4"/>
+        <video url="https://youtu.be/SiKY5Im2FGo"/>
+        <enlace url="https://www.recetasnestle.com.mx/recetas/enchiladas-verdes-cremosas"/>
+        <notas>Se pueden acompañar con queso fresco rallado.</notas>
+    </receta>
+
+    <!-- Receta 10 -->
+    <receta id="r010" categoria="Bebida" dificultad="Baja">
+        <nombre>Agua de Jamaica</nombre>
+        <descripcion>Refrescante bebida de flor de jamaica con un toque de limón.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="50" unidad="g">Flor de jamaica seca</ingrediente>
+            <ingrediente cantidad="1" unidad="l">Agua</ingrediente>
+            <ingrediente cantidad="50" unidad="g">Azúcar</ingrediente>
+            <ingrediente cantidad="10" unidad="ml">Jugo de limón</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Hervir agua y agregar la flor de jamaica.</paso>
+            <paso orden="2">Dejar reposar 10 minutos y colar.</paso>
+            <paso orden="3">Añadir azúcar y jugo de limón, mezclar bien.</paso>
+            <paso orden="4">Servir fría con hielo.</paso>
+        </preparacion>
+        <tiempo total="15" unidad="minutos"/>
+        <porciones cantidad="4"/>
+        <video url="https://youtu.be/RWmm1b_H6SU"/>
+        <enlace url="https://laroussecocina.mx/receta/agua-de-jamaica/"/>
+        <notas>Puedes ajustar el azúcar según tu preferencia.</notas>
+    </receta>
+
+    <!-- Receta 11 -->
+    <receta id="r011" categoria="Postre" dificultad="Media">
+        <nombre>Tiramisu Italiano</nombre>
+        <descripcion>Clásico postre italiano con capas de bizcocho, café y mascarpone.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="200" unidad="g">Bizcochos de soletilla</ingrediente>
+            <ingrediente cantidad="250" unidad="g">Queso mascarpone</ingrediente>
+            <ingrediente cantidad="100" unidad="g">Azúcar</ingrediente>
+            <ingrediente cantidad="200" unidad="ml">Café espresso frío</ingrediente>
+            <ingrediente cantidad="30" unidad="g">Cacao en polvo</ingrediente>
+            <ingrediente cantidad="2" unidad="u">Huevos</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Separar claras y yemas de los huevos, batir las yemas con azúcar.</paso>
+            <paso orden="2">Añadir mascarpone a las yemas y mezclar.</paso>
+            <paso orden="3">Batir las claras a punto de nieve e incorporar suavemente.</paso>
+            <paso orden="4">Remojar los bizcochos en café y colocar capas alternando con la crema.</paso>
+            <paso orden="5">Refrigerar 4 horas y espolvorear cacao antes de servir.</paso>
+        </preparacion>
+        <tiempo total="300" unidad="minutos"/>
+        <porciones cantidad="6"/>
+        <video url="https://youtu.be/Z2ql_eRRAtQ"/>
+        <enlace url="https://galbani.es/recetas/tiramisu/receta-original-italiana/"/>
+        <notas>Se puede añadir licor de café para un sabor más intenso.</notas>
+    </receta>
+
+    <!-- Receta 12 -->
+    <receta id="r012" categoria="Plato Principal" dificultad="Media">
+        <nombre>Curry de Pollo Indio</nombre>
+        <descripcion>Pollo cocinado en una salsa cremosa con especias tradicionales indias.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="500" unidad="g">Pechuga de pollo</ingrediente>
+            <ingrediente cantidad="200" unidad="ml">Leche de coco</ingrediente>
+            <ingrediente cantidad="1" unidad="pieza">Cebolla</ingrediente>
+            <ingrediente cantidad="2" unidad="dientes">Ajo</ingrediente>
+            <ingrediente cantidad="10" unidad="g">Pasta de curry</ingrediente>
+            <ingrediente cantidad="5" unidad="g">Cilantro fresco</ingrediente>
+            <ingrediente cantidad="5" unidad="g">Sal</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Sofreír cebolla y ajo picados hasta dorar.</paso>
+            <paso orden="2">Agregar pasta de curry y cocinar 2 minutos.</paso>
+            <paso orden="3">Incorporar pollo cortado en cubos y sellar la carne.</paso>
+            <paso orden="4">Añadir leche de coco y cocinar a fuego lento 20 minutos.</paso>
+            <paso orden="5">Servir con cilantro fresco picado encima y arroz blanco.</paso>
+        </preparacion>
+        <tiempo total="45" unidad="minutos"/>
+        <porciones cantidad="4"/>
+        <video url="https://youtu.be/o_PniN2lq4k"/>
+        <enlace url="https://www.recetasgratis.net/receta-de-pollo-al-curry-hindu-facil-72314.html"/>
+        <notas>Se puede ajustar la cantidad de pasta de curry según el picante deseado.</notas>
+    </receta>
+
+    <!-- Receta 13 -->
+    <receta id="r013" categoria="Bebida" dificultad="Baja">
+        <nombre>Smoothie de Mango y Plátano</nombre>
+        <descripcion>Bebida tropical refrescante con mango y plátano.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="1" unidad="pieza">Mango maduro</ingrediente>
+            <ingrediente cantidad="1" unidad="pieza">Plátano</ingrediente>
+            <ingrediente cantidad="200" unidad="ml">Leche</ingrediente>
+            <ingrediente cantidad="2" unidad="cucharadas">Miel</ingrediente>
+            <ingrediente cantidad="5" unidad="g">Hielo</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Pelar y cortar el mango y plátano en trozos.</paso>
+            <paso orden="2">Licuar con leche, miel y hielo hasta obtener mezcla homogénea.</paso>
+            <paso orden="3">Servir inmediatamente en vasos altos.</paso>
+        </preparacion>
+        <tiempo total="10" unidad="minutos"/>
+        <porciones cantidad="2"/>
+        <video url="https://youtu.be/invDlb5wulI"/>
+        <enlace url="https://www.recetasnestle.com.mx/recetas/smoothie-mango-y-platano"/>
+        <notas>Se puede añadir un poco de yogur natural para mayor cremosidad.</notas>
+    </receta>
+
+    <!-- Receta 14 -->
+    <receta id="r014" categoria="Postre" dificultad="Media">
+        <nombre>Panna Cotta con Frutos Rojos</nombre>
+        <descripcion>Postre italiano suave acompañado de salsa de frutos rojos.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="500" unidad="ml">Crema de leche</ingrediente>
+            <ingrediente cantidad="100" unidad="g">Azúcar</ingrediente>
+            <ingrediente cantidad="1" unidad="cucharadita">Esencia de vainilla</ingrediente>
+            <ingrediente cantidad="5" unidad="g">Gelatina en polvo</ingrediente>
+            <ingrediente cantidad="100" unidad="g">Frutos rojos</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Hidratar la gelatina en un poco de agua fría.</paso>
+            <paso orden="2">Calentar la crema con azúcar y vainilla, sin hervir.</paso>
+            <paso orden="3">Añadir la gelatina disuelta y mezclar bien.</paso>
+            <paso orden="4">Verter en moldes y refrigerar al menos 4 horas.</paso>
+            <paso orden="5">Servir con frutos rojos por encima.</paso>
+        </preparacion>
+        <tiempo total="270" unidad="minutos"/>
+        <porciones cantidad="4"/>
+        <video url="https://youtu.be/1o-he-xpa74"/>
+        <enlace url="https://www.cookwithbelula.com/es/receta/panacota-salsa-frutos-rojos"/>
+        <notas>Se puede acompañar con un toque de menta fresca.</notas>
+    </receta>
+
+    <!-- Receta 15 -->
+    <receta id="r015" categoria="Plato Principal" dificultad="Alta">
+        <nombre>Ratatouille Francés</nombre>
+        <descripcion>Plato francés de verduras al horno en capas finas y coloridas.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="1" unidad="pieza">Berenjena</ingrediente>
+            <ingrediente cantidad="1" unidad="pieza">Calabacín</ingrediente>
+            <ingrediente cantidad="1" unidad="pieza">Pimiento rojo</ingrediente>
+            <ingrediente cantidad="2" unidad="pieza">Tomates</ingrediente>
+            <ingrediente cantidad="1" unidad="pieza">Cebolla</ingrediente>
+            <ingrediente cantidad="2" unidad="dientes">Ajo</ingrediente>
+            <ingrediente cantidad="20" unidad="ml">Aceite de oliva</ingrediente>
+            <ingrediente cantidad="5" unidad="g">Sal</ingrediente>
+            <ingrediente cantidad="5" unidad="g">Hierbas provenzales</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Cortar todas las verduras en rodajas finas.</paso>
+            <paso orden="2">Sofreír cebolla y ajo, luego colocarlos en la base de un molde.</paso>
+            <paso orden="3">Colocar las rodajas de verduras en capas alternadas.</paso>
+            <paso orden="4">Rociar con aceite de oliva, sal y hierbas.</paso>
+            <paso orden="5">Hornear a 180°C durante 45 minutos hasta que estén tiernas.</paso>
+        </preparacion>
+        <tiempo total="60" unidad="minutos"/>
+        <porciones cantidad="4"/>
+        <video url="https://youtu.be/QOxDxjhyyII"/>
+        <enlace url="https://www.bonviveur.es/recetas/ratatouille-casero"/>
+        <notas>Se puede acompañar con queso rallado al gusto.</notas>
+    </receta>
+
+    <!-- Receta 16 -->
+    <receta id="r016" categoria="Postre" dificultad="Baja">
+        <nombre>Brownies de Chocolate</nombre>
+        <descripcion>Deliciosos brownies húmedos y chocolatosos, fáciles de preparar.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="200" unidad="g">Chocolate negro</ingrediente>
+            <ingrediente cantidad="150" unidad="g">Mantequilla</ingrediente>
+            <ingrediente cantidad="150" unidad="g">Azúcar</ingrediente>
+            <ingrediente cantidad="3" unidad="u">Huevos</ingrediente>
+            <ingrediente cantidad="100" unidad="g">Harina</ingrediente>
+            <ingrediente cantidad="1" unidad="cucharadita">Esencia de vainilla</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Derretir el chocolate con la mantequilla.</paso>
+            <paso orden="2">Batir los huevos con azúcar y añadir el chocolate derretido.</paso>
+            <paso orden="3">Incorporar la harina y la vainilla, mezclar bien.</paso>
+            <paso orden="4">Verter en un molde engrasado y hornear 25-30 minutos a 180°C.</paso>
+        </preparacion>
+        <tiempo total="50" unidad="minutos"/>
+        <porciones cantidad="8"/>
+        <video url="https://youtu.be/dOHShci3KrQ"/>
+        <enlace url="https://recetasdecocina.elmundo.es/2018/03/brownie-chocolate-receta-facil.html"/>
+        <notas>Se pueden añadir nueces o chispas de chocolate para más sabor.</notas>
+    </receta>
+
+    <!-- Receta 17 -->
+    <receta id="r017" categoria="Plato Principal" dificultad="Media">
+        <nombre>Espagueti a la Boloñesa</nombre>
+        <descripcion>Clásica pasta italiana con salsa de carne y tomate.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="400" unidad="g">Espagueti</ingrediente>
+            <ingrediente cantidad="300" unidad="g">Carne molida</ingrediente>
+            <ingrediente cantidad="1" unidad="pieza">Cebolla</ingrediente>
+            <ingrediente cantidad="2" unidad="dientes">Ajo</ingrediente>
+            <ingrediente cantidad="400" unidad="g">Tomate triturado</ingrediente>
+            <ingrediente cantidad="10" unidad="ml">Aceite de oliva</ingrediente>
+            <ingrediente cantidad="5" unidad="g">Sal</ingrediente>
+            <ingrediente cantidad="5" unidad="g">Pimienta</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Cocinar el espagueti según instrucciones del paquete.</paso>
+            <paso orden="2">Sofreír cebolla y ajo picados en aceite de oliva.</paso>
+            <paso orden="3">Añadir la carne y cocinar hasta dorar.</paso>
+            <paso orden="4">Incorporar el tomate triturado y cocinar 20 minutos a fuego lento.</paso>
+            <paso orden="5">Servir la salsa sobre el espagueti y espolvorear queso rallado.</paso>
+        </preparacion>
+        <tiempo total="45" unidad="minutos"/>
+        <porciones cantidad="4"/>
+        <video url="https://youtu.be/je4morYbxBk"/>
+        <enlace url="https://www.recetasnestle.com.mx/recetas/espagueti-bolonesa"/>
+        <notas>Se puede añadir albahaca fresca para un toque aromático.</notas>
+    </receta>
+
+    <!-- Receta 18 -->
+    <receta id="r018" categoria="Bebida" dificultad="Baja">
+        <nombre>Limonada Casera</nombre>
+        <descripcion>Bebida refrescante de limón con un toque de azúcar y menta.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="4" unidad="u">Limones</ingrediente>
+            <ingrediente cantidad="1" unidad="l">Agua</ingrediente>
+            <ingrediente cantidad="50" unidad="g">Azúcar</ingrediente>
+            <ingrediente cantidad="5" unidad="g">Hojas de menta</ingrediente>
+            <ingrediente cantidad="5" unidad="g">Hielo</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Exprimir los limones y colar el jugo.</paso>
+            <paso orden="2">Mezclar el jugo con agua y azúcar hasta disolver.</paso>
+            <paso orden="3">Añadir hielo y hojas de menta antes de servir.</paso>
+        </preparacion>
+        <tiempo total="10" unidad="minutos"/>
+        <porciones cantidad="4"/>
+        <video url="https://youtu.be/8Rd9HV8iweU"/>
+        <enlace url="https://www.cocinatis.com/receta/limonada.html"/>
+        <notas>Se puede añadir rodajas de limón para decorar los vasos.</notas>
+    </receta>
+
+    <!-- Receta 19 -->
+    <receta id="r019" categoria="Entrada" dificultad="Baja">
+        <nombre>Sopa de Verduras</nombre>
+        <descripcion>Sopa ligera con verduras frescas, ideal como entrada saludable.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="1" unidad="pieza">Zanahoria</ingrediente>
+            <ingrediente cantidad="1" unidad="pieza">Calabacín</ingrediente>
+            <ingrediente cantidad="1" unidad="pieza">Papa</ingrediente>
+            <ingrediente cantidad="1" unidad="pieza">Cebolla</ingrediente>
+            <ingrediente cantidad="1" unidad="diente">Ajo</ingrediente>
+            <ingrediente cantidad="1" unidad="l">Agua</ingrediente>
+            <ingrediente cantidad="5" unidad="g">Sal</ingrediente>
+            <ingrediente cantidad="5" unidad="g">Pimienta</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Pelar y cortar todas las verduras en cubos.</paso>
+            <paso orden="2">Sofreír cebolla y ajo picados hasta dorar.</paso>
+            <paso orden="3">Añadir las verduras y el agua, cocinar hasta que estén tiernas.</paso>
+            <paso orden="4">Sazonar con sal y pimienta al gusto.</paso>
+            <paso orden="5">Servir caliente, se puede acompañar con pan tostado.</paso>
+        </preparacion>
+        <tiempo total="35" unidad="minutos"/>
+        <porciones cantidad="4"/>
+        <video url="https://youtu.be/pNMfnNw3Q6A"/>
+        <enlace url="https://www.pizcadesabor.com/sopa-de-verduras/"/>
+        <notas>Se puede añadir un poco de crema o queso rallado al servir.</notas>
+    </receta>
+
+    <!-- Receta 20 -->
+    <receta id="r020" categoria="Postre" dificultad="Baja">
+        <nombre>Gelatina de Frutas</nombre>
+        <descripcion>Gelatina fácil con frutas frescas de temporada.</descripcion>
+        <ingredientes>
+            <ingrediente cantidad="1" unidad="paquete">Gelatina sabor fresa</ingrediente>
+            <ingrediente cantidad="500" unidad="ml">Agua</ingrediente>
+            <ingrediente cantidad="100" unidad="g">Frutas variadas</ingrediente>
+        </ingredientes>
+        <preparacion>
+            <paso orden="1">Preparar la gelatina según instrucciones del paquete.</paso>
+            <paso orden="2">Dejar enfriar un poco y añadir las frutas cortadas.</paso>
+            <paso orden="3">Refrigerar hasta que cuaje completamente.</paso>
+            <paso orden="4">Servir fría como postre refrescante.</paso>
+        </preparacion>
+        <tiempo total="180" unidad="minutos"/>
+        <porciones cantidad="6"/>
+        <video url="https://youtu.be/86y1SU5sIGo"/>
+        <enlace url="https://www.lazayafruits.com/es/blog-de-frutas-en-conserva/como-hacer-gelatina-de-frutas-casera/"/>
+        <notas>Se pueden usar frutas al gusto según la temporada.</notas>
+    </receta>
+
 </recetario>

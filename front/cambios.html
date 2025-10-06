@@ -6,7 +6,7 @@
     <title>Editar Receta - Recetario Digital</title>
     <link rel="stylesheet" href="Style/cambios.css">
 </head>
-<body>
+<body onload="inicio()">
     <header class="header">
         <div class="header-content">
             <div class="logo">
@@ -56,28 +56,8 @@
                 </div>
 
                 <!-- Lista de recetas disponibles  -->
-                <div class="recetas-list">
+                <div class="recetas-list" id="recetasList">
                     <h3 class="card-title">Recetas Disponibles</h3>
-                    <div class="receta-item">
-                        <span class="receta-id">r001</span>
-                        <span class="receta-nombre">Pastel de Chocolate</span>
-                    </div>
-                    <div class="receta-item">
-                        <span class="receta-id">r002</span>
-                        <span class="receta-nombre">Ensalada César</span>
-                    </div>
-                    <div class="receta-item">
-                        <span class="receta-id">r003</span>
-                        <span class="receta-nombre">Paella Valenciana</span>
-                    </div>
-                    <div class="receta-item">
-                        <span class="receta-id">r004</span>
-                        <span class="receta-nombre">Flan Casero</span>
-                    </div>
-                    <div class="receta-item">
-                        <span class="receta-id">r005</span>
-                        <span class="receta-nombre">Batido de Fresas</span>
-                    </div>
                 </div>
             </aside>
 
@@ -124,7 +104,7 @@
 
                         <div class="form-group">
                             <label for="descripcion">Descripción</label>
-                            <textarea id="descripcion" class="input-field" rows="2">Delicioso pastel de chocolate esponjoso y húmedo.</textarea>
+                            <textarea id="descripcion" class="input-field" rows="2"></textarea>
                         </div>
                     </div>
 
@@ -138,64 +118,13 @@
                         <div id="ingredientesContainer">
                             <!-- Ingrediente 1  ejemplooo-->
                             <div class="ingrediente-item">
-                                <div class="form-group">
-                                    <input type="text" class="input-field ing-nombre" value="Harina" placeholder="Ingrediente">
-                                </div>
-                                <div class="form-group-inline">
-                                    <input type="number" class="input-field ing-cantidad" value="200" placeholder="Cant.">
-                                    <select class="input-field ing-unidad">
-                                        <option value="g" selected>g</option>
-                                        <option value="kg">kg</option>
-                                        <option value="ml">ml</option>
-                                        <option value="l">l</option>
-                                        <option value="u">u</option>
-                                        <option value="cucharada">cdas</option>
-                                        <option value="cucharadita">cdta</option>
-                                    </select>
-                                </div>
-                                <button type="button" class="btn-delete">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                                    </svg>
-                                </button>
-                            </div>
+                                <input type="text" class="input-field ing-nombre" placeholder="Ingrediente">
 
-                            <!-- Ingrediente 2 -->
-                            <div class="ingrediente-item">
-                                <div class="form-group">
-                                    <input type="text" class="input-field ing-nombre" value="Cacao en polvo" placeholder="Ingrediente">
+                                <div class="cantidad-unidad">
+                                    <input type="number" class="input-field ing-cantidad" placeholder="Cant.">
+                                    <input type="text" class="input-field ing-unidad" placeholder="Unidad (g, kg, ml, ...)" maxlength="10">
                                 </div>
-                                <div class="form-group-inline">
-                                    <input type="number" class="input-field ing-cantidad" value="100" placeholder="Cant.">
-                                    <select class="input-field ing-unidad">
-                                        <option value="g" selected>g</option>
-                                        <option value="kg">kg</option>
-                                        <option value="ml">ml</option>
-                                        <option value="l">l</option>
-                                    </select>
-                                </div>
-                                <button type="button" class="btn-delete">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                                    </svg>
-                                </button>
-                            </div>
 
-                            <!-- Ingrediente 3 -->
-                            <div class="ingrediente-item">
-                                <div class="form-group">
-                                    <input type="text" class="input-field ing-nombre" value="Azúcar" placeholder="Ingrediente">
-                                </div>
-                                <div class="form-group-inline">
-                                    <input type="number" class="input-field ing-cantidad" value="150" placeholder="Cant.">
-                                    <select class="input-field ing-unidad">
-                                        <option value="g" selected>g</option>
-                                        <option value="kg">kg</option>
-                                        <option value="ml">ml</option>
-                                    </select>
-                                </div>
                                 <button type="button" class="btn-delete">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -217,31 +146,7 @@
                             <!-- Paso 1 -->
                             <div class="paso-item">
                                 <div class="paso-numero">1</div>
-                                <textarea class="input-field paso-descripcion" rows="2">Precalentar el horno a 180°C.</textarea>
-                                <button type="button" class="btn-delete">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                                    </svg>
-                                </button>
-                            </div>
-
-                            <!-- Paso 2 -->
-                            <div class="paso-item">
-                                <div class="paso-numero">2</div>
-                                <textarea class="input-field paso-descripcion" rows="2">Mezclar los ingredientes secos.</textarea>
-                                <button type="button" class="btn-delete">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                                    </svg>
-                                </button>
-                            </div>
-
-                            <!-- Paso 3 -->
-                            <div class="paso-item">
-                                <div class="paso-numero">3</div>
-                                <textarea class="input-field paso-descripcion" rows="2">Añadir los ingredientes líquidos y mezclar bien.</textarea>
+                                <textarea class="input-field paso-descripcion" rows="2"></textarea>
                                 <button type="button" class="btn-delete">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -256,31 +161,35 @@
                     <div class="form-section">
                         <h3 class="section-title">Detalles Adicionales</h3>
                         
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="tiempoTotal">Tiempo Total (min)</label>
-                                <input type="number" id="tiempoTotal" class="input-field" value="60" min="1">
+                        <div class="form-group-inline">
+                            <div class="form-group-inline">
+                                <input type="number" id="tiempoTotal" class="input-field" min="1">
+                                <select id="unidadTiempo" class="input-field">
+                                    <option value=""selected></option>
+                                    <option value="minutos">Minutos</option>
+                                    <option value="horas">Horas</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
                                 <label for="porciones">Porciones</label>
-                                <input type="number" id="porciones" class="input-field" value="8" min="1">
+                                <input type="number" id="porciones" class="input-field" min="1">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="videoUrl">URL del Video</label>
-                            <input type="url" id="videoUrl" class="input-field" value="https://www.youtube.com/watch?v=abcd1234">
+                            <input type="url" id="videoUrl" class="input-field" >
                         </div>
 
                         <div class="form-group">
                             <label for="enlaceUrl">Enlace de Referencia</label>
-                            <input type="url" id="enlaceUrl" class="input-field" value="https://www.recetas.com/pastel-de-chocolate">
+                            <input type="url" id="enlaceUrl" class="input-field">
                         </div>
 
                         <div class="form-group">
                             <label for="notas">Notas Adicionales</label>
-                            <textarea id="notas" class="input-field" rows="2">Se puede decorar con frutas o crema batida.</textarea>
+                            <textarea id="notas" class="input-field" rows="2"></textarea>
                         </div>
                     </div>
 
@@ -306,6 +215,6 @@
     </main>
 
     <!-- JAVASCRIPT: para las funciones xd -->
-    <script src="js/cambios.js"></script>
+    <script src="js/editar.js"></script>
 </body>
 </html>
