@@ -40,6 +40,7 @@
             <div class="card mb-4 shadow">
               <div class="card-body">
                 <h2 class="card-title" style="color: #78C2AD; border-bottom: 3px solid #78C2AD; padding-bottom: 10px; display: inline-block;"><xsl:value-of select="r:nombre"/></h2>
+                <p style="color: #555; font-size: 0.85rem; margin-top: 0.2rem;">ID: <xsl:value-of select="@id"/></p>
                 
                 <div class="mb-3">
                   <span class="badge me-2" style="background: linear-gradient(135deg, #78C2AD 0%, #56ab91 100%); font-size: 0.95rem; padding: 0.5rem 1rem;">
