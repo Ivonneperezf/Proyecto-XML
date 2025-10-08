@@ -27,6 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+const form = document.getElementById("formEditar");
+form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    await guardar_cambios();
+});
+
 // Función para buscar receta
 function buscarReceta() {
     const id = searchInput.value.trim().toLowerCase();
@@ -340,4 +346,139 @@ function resetFormulario() {
 
     contenedorIngredientes.innerHTML = ""; // limpia todos los ingredientes
     pasosContainer.innerHTML = "";         // limpia todos los pasos
+}
+
+async function cargarXMLEdit() {
+    try {
+        const response = await fetch("../data/recetario.xml");
+        if (!response.ok) throw new Error("No se pudo cargar el XML");
+
+        const xmlText = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, "application/xml");
+
+        if (xmlDoc.getElementsByTagName("parsererror").length > 0) {
+            throw new Error("Error al analizar el XML");
+        }
+
+        return xmlDoc; // devolver el documento XML parseado
+    } catch (error) {
+        console.error("Error cargando el XML:", error);
+    }
+}
+
+function buscarRecetaPorId(xmlDoc, idReceta) {
+    const ns = "http://www.recetas.com";
+    const recetas = xmlDoc.getElementsByTagNameNS(ns, "receta");
+    
+    for (let i = 0; i < recetas.length; i++) {
+        if (recetas[i].getAttribute("id") === idReceta) {
+            return recetas[i]; // devuelve el nodo <receta>
+        }
+    }
+    return null; // no se encontró
+}
+
+
+function editarReceta(recetaNodo, cambios) {
+    const ns = "http://www.recetas.com";
+
+    if (cambios.nombre) {
+        const nombreNodo = recetaNodo.getElementsByTagNameNS(ns, "nombre")[0];
+        nombreNodo.textContent = cambios.nombre;
+    }
+
+    if (cambios.descripcion) {
+        const descripcionNodo = recetaNodo.getElementsByTagNameNS(ns, "descripcion")[0];
+        descripcionNodo.textContent = cambios.descripcion;
+    }
+
+    if (cambios.categoria) {
+        recetaNodo.setAttribute("categoria", cambios.categoria);
+    }
+
+    if (cambios.dificultad) {
+        recetaNodo.setAttribute("dificultad", cambios.dificultad);
+    }
+
+    // Ejemplo: cambiar notas
+    if (cambios.notas) {
+        const notasNodo = recetaNodo.getElementsByTagNameNS(ns, "notas")[0];
+        notasNodo.textContent = cambios.notas;
+    }
+}
+
+function obtenerIngredientes() {
+    const ingredientesArray = [];
+    const contenedor = document.getElementById("ingredientesContainer");
+    const items = contenedor.querySelectorAll(".ingrediente-item");
+
+    items.forEach((item, index) => {
+        // Omitir la plantilla (primer elemento)
+        if (index === 0 && item.id === "contenedor-ingredientes") return;
+
+        const nombre = item.querySelector(".ing-nombre")?.value.trim() || "";
+        const cantidad = item.querySelector(".ing-cantidad")?.value.trim() || "";
+        const unidad = item.querySelector(".ing-unidad")?.value.trim() || "";
+
+        if (nombre !== "") {
+            ingredientesArray.push({ nombre, cantidad, unidad });
+        }
+    });
+
+    return ingredientesArray;
+}
+
+async function guardar_cambios() {
+    // try {
+    //     // 1️⃣ Cargar el XML
+    //     const xmlDoc = await cargarXML();
+    //     if (!xmlDoc) throw new Error("No se pudo cargar el XML");
+
+    //     // 2️⃣ Obtener el id de la receta desde el input
+    //     const recetaId = document.getElementById("recetaId").value.trim();
+    //     if (!recetaId) {
+    //         alert("El ID de la receta está vacío");
+    //         return;
+    //     }
+
+    //     // 3️⃣ Buscar la receta por ID
+    //     const receta = buscarRecetaPorId(xmlDoc, recetaId);
+    //     if (!receta) {
+    //         alert("Receta no encontrada en el XML");
+    //         return;
+    //     }
+
+    //     // 4️⃣ Crear objeto con los cambios desde el formulario
+        
+
+    //     const cambios = {
+    //         nombre: document.getElementById("nombre").value.trim(),
+    //         categoria: document.getElementById("categoria").value,
+    //         dificultad: document.getElementById("dificultad").value,
+    //         descripcion: document.getElementById("descripcion").value.trim(),
+    //     };
+
+    //     // 5️⃣ Editar la receta
+    //     editarReceta(receta, cambios);
+
+    //     // 6️⃣ Serializar el XML modificado
+    //     const nuevoXMLString = new XMLSerializer().serializeToString(xmlDoc);
+
+    //     // 7️⃣ Enviar al servidor
+    //     const respuesta = await fetch("../backend/guardar_recetario.php", {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/xml" },
+    //         body: nuevoXMLString
+    //     });
+
+    //     const mensaje = await respuesta.text();
+
+    //     // 8️⃣ Mostrar mensaje del servidor
+    //     alert(mensaje);
+
+    // } catch (error) {
+    //     console.error("Error al guardar los cambios:", error);
+    //     alert("Ocurrió un error al guardar los cambios. Revisa la consola.");
+    // }
 }
