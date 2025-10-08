@@ -283,26 +283,40 @@ select.input-field {
     cursor: pointer;
 }
 
-/* Ingredientes */
+/* Cada ingrediente: fila con nombre, cantidad, unidad y botón */
 .ingrediente-item {
     display: flex;
+    flex-wrap: wrap; /* evita deformaciones en pantallas pequeñas */
     align-items: center;
+    justify-content: space-between;
     gap: 1rem;
     background: rgba(20, 20, 35, 0.5);
     border: 1px solid rgba(139, 154, 255, 0.2);
     border-radius: 8px;
     padding: 0.8rem 1rem;
-    margin-bottom: 0.8rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
+/* Nombre del ingrediente */
 .ingrediente-item .ing-nombre {
-    flex: 2; /* ocupa más espacio para el nombre */
+    flex: 2;
 }
 
+/* Contenedor principal: apila los ingredientes verticalmente */
+#contenedor-ingredientes {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+    width: 100%;
+}
+
+/* Los campos de cantidad y unidad juntos */
 .cantidad-unidad {
     display: flex;
     gap: 0.5rem;
-    flex: 1; /* ocupa espacio medio */
+    flex: 1;
 }
 
 .cantidad-unidad .ing-cantidad {
@@ -387,6 +401,7 @@ select.input-field {
     color: #ffffff;
 }
 
+/* Botón eliminar */
 .btn-delete {
     background: rgba(245, 87, 108, 0.15);
     color: #f5576c;
@@ -398,6 +413,7 @@ select.input-field {
     height: 35px;
     border-radius: 6px;
     cursor: pointer;
+    flex-shrink: 0; /* evita que se achique si el espacio es justo */
 }
 
 .btn-delete:hover {
@@ -477,8 +493,10 @@ select.input-field {
     }
 
     .cantidad-unidad {
-        width: 100%;
-        justify-content: space-between;
+        display: flex;           /* hace que los hijos estén en fila */
+        gap: 0.5rem;             /* espacio entre cantidad y unidad */
+        width: 100%;             /* ocupa todo el ancho del ingrediente */
+        justify-content: flex-start; /* o space-between si quieres que estén separados */
     }
 
     .paso-item {

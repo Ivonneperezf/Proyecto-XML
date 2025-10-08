@@ -185,3 +185,159 @@ function mostrarListaRecetas() {
         recetasList.appendChild(div);
     });
 }
+
+// Función para mostrar vista previa
+function mostrarVistaPrevia(receta) {
+    const recetaId = document.getElementById("recetaId");
+    const nombre = document.getElementById("nombre");
+    const categoria = document.getElementById("categoria");
+    const dificultad = document.getElementById("dificultad");
+    const descripcion = document.getElementById("descripcion");
+    const contenedor = document.getElementById("contenedor-ingredientes");
+    const tiempocantidad = document.getElementById("tiempoTotal");
+    const unidadTiempo = document.getElementById("unidadTiempo");
+    const porciones = document.getElementById("porciones");
+    const videoUrl = document.getElementById("videoUrl");
+    const enlaceUrl = document.getElementById("enlaceUrl");
+    const notas = document.getElementById("notas");
+
+    recetaId.value = receta["id"];
+    nombre.value = receta["nombre"];
+    categoria.value = receta["categoria"];
+    dificultad.value = receta["dificultad"];
+    descripcion.value = receta["descripcion"];
+    const ingredientes = receta["ingredientes"];
+    contenedor.innerHTML = "";
+
+    ingredientes.forEach(ing => {
+        const item = document.createElement("div");
+        item.classList.add("ingrediente-item");
+
+        const inputNombre = document.createElement("input");
+        inputNombre.type = "text";
+        inputNombre.classList.add("input-field", "ing-nombre");
+        inputNombre.placeholder = "Ingrediente";
+        inputNombre.value = ing.nombre;
+
+        const divCantUni = document.createElement("div");
+        divCantUni.classList.add("cantidad-unidad");
+
+        const inputCantidad = document.createElement("input");
+        inputCantidad.type = "number";
+        inputCantidad.classList.add("input-field", "ing-cantidad");
+        inputCantidad.placeholder = "Cant.";
+        inputCantidad.value = ing.cantidad;
+
+        const inputUnidad = document.createElement("input");
+        inputUnidad.type = "text";
+        inputUnidad.classList.add("input-field", "ing-unidad");
+        inputUnidad.placeholder = "Unidad (g, kg, ml, ...)";
+        inputUnidad.maxLength = 10;
+        inputUnidad.value = ing.unidad;
+
+        divCantUni.appendChild(inputCantidad);
+        divCantUni.appendChild(inputUnidad);
+
+        const btnDelete = document.createElement("button");
+        btnDelete.type = "button";
+        btnDelete.classList.add("btn-delete");
+        btnDelete.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        `;
+        btnDelete.addEventListener("click", () => item.remove());
+
+        item.appendChild(inputNombre);
+        item.appendChild(divCantUni);
+        item.appendChild(btnDelete);
+
+        contenedor.appendChild(item);
+    });
+
+    const pasosContainer = document.getElementById("pasosContainer");
+    const pasos = receta["pasos"]; // tu array de pasos
+
+    // Limpiar los pasos previos
+    pasosContainer.innerHTML = "";
+
+    // Crear cada paso
+    pasos.forEach(paso => {
+        const pasoItem = document.createElement("div");
+        pasoItem.classList.add("paso-item");
+        pasoItem.style.display = "flex";       // fila de número, textarea y botón
+        pasoItem.style.alignItems = "center";
+        pasoItem.style.gap = "1rem";
+        pasoItem.style.marginBottom = "0.8rem";
+
+        // Número del paso
+        const pasoNumero = document.createElement("div");
+        pasoNumero.classList.add("paso-numero");
+        pasoNumero.textContent = paso.orden;
+        pasoNumero.style.minWidth = "20px"; // opcional, que no se encoja
+
+        // Textarea de descripción
+        const textarea = document.createElement("textarea");
+        textarea.classList.add("input-field", "paso-descripcion");
+        textarea.rows = 2;
+        textarea.value = paso.descripcion;
+        textarea.style.flex = "1"; // ocupa todo el espacio disponible
+
+        // Botón eliminar
+        const btnDelete = document.createElement("button");
+        btnDelete.type = "button";
+        btnDelete.classList.add("btn-delete");
+        btnDelete.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        `;
+        btnDelete.addEventListener("click", () => pasoItem.remove());
+
+        // Armar el bloque del paso
+        pasoItem.appendChild(pasoNumero);
+        pasoItem.appendChild(textarea);
+        pasoItem.appendChild(btnDelete);
+
+        // Agregar al contenedor principal
+        pasosContainer.appendChild(pasoItem);
+    });
+    tiempocantidad.value = receta["tiempo"]["total"];
+    unidadTiempo.value = receta["tiempo"]["unidad"];
+    porciones.value = receta["porciones"];
+    videoUrl.value = receta["video"];
+    enlaceUrl.value = receta["enlace"];
+    notas.value = receta["notas"];
+}
+
+function resetFormulario() {
+    // Pregunta de confirmación
+    if (!confirm("¿Seguro que desea cancelar?")) {
+        return; // Si el usuario cancela, no hace nada
+    }
+
+    // Campos de texto
+    document.getElementById("searchId").value="";
+    document.getElementById("recetaId").value = "";  // también se borra el ID
+    document.getElementById("nombre").value = "";
+    document.getElementById("descripcion").value = "";
+    document.getElementById("tiempoTotal").value = "";
+    document.getElementById("unidadTiempo").value = "";
+    document.getElementById("porciones").value = "";
+    document.getElementById("videoUrl").value = "";
+    document.getElementById("enlaceUrl").value = "";
+    document.getElementById("notas").value = "";
+
+    // Selects
+    document.getElementById("categoria").value = "";
+    document.getElementById("dificultad").value = "";
+
+    // Contenedores de ingredientes y pasos
+    const contenedorIngredientes = document.getElementById("contenedor-ingredientes");
+    const pasosContainer = document.getElementById("pasosContainer");
+
+    contenedorIngredientes.innerHTML = ""; // limpia todos los ingredientes
+    pasosContainer.innerHTML = "";         // limpia todos los pasos
+}
