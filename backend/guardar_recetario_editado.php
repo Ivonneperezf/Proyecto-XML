@@ -1,13 +1,13 @@
 <?php
-// 1️⃣ Leer el XML enviado por POST
+// Leer el XML enviado por POST
 $xml = file_get_contents("php://input");
 
-// 2️⃣ Cargarlo en DOMDocument para poder formatearlo
+// Cargarlo en DOMDocument para poder formatearlo
 $dom = new DOMDocument();
 $dom->preserveWhiteSpace = false;
 $dom->formatOutput = true;
 
-// 3️⃣ Intentar cargar el XML recibido
+// Intentar cargar el XML recibido
 if (!$dom->loadXML($xml)) {
     // Si hay error en el XML, responder con mensaje de error
     http_response_code(400);
@@ -15,7 +15,7 @@ if (!$dom->loadXML($xml)) {
     exit;
 }
 
-// 4️⃣ Guardar el XML en el archivo del recetario
+// Guardar el XML en el archivo del recetario
 $archivoDestino = "../data/recetario.xml"; // Cambia la ruta si es necesario
 if (!$dom->save($archivoDestino)) {
     http_response_code(500);
@@ -23,6 +23,6 @@ if (!$dom->save($archivoDestino)) {
     exit;
 }
 
-// 5️⃣ Responder al cliente
+// Responder al cliente
 echo "Receta editada y guardada correctamente";
 ?>

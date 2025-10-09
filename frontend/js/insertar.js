@@ -149,22 +149,25 @@ function validar_entradas(event) {
     ingredientes = [];
     pasos = [];
 
-    // Limpiar contenedores del DOM (si existen)
+    // Limpiar contenedores del DOM 
     const ingredientesContainer = document.getElementById("ingredientesContainer");
     if (ingredientesContainer) ingredientesContainer.innerHTML = "";
 
     const pasosContainer = document.getElementById("pasosContainer");
     if (pasosContainer) pasosContainer.innerHTML = "";
-
-    cargarXML();
+    document.getElementById("videoUrl").value = "";
+    document.getElementById("enlaceUrl").value = "";
+    document.getElementById("notas").value = "";
+    //cargarXML();
     return true;
 }
 
+// Funcion para agregar receta al XML
 async function agregarRecetaXML(valores_validos) {
-    const NS = "http://www.recetas.com"; // Namespace principal
+    const NS = "http://www.recetas.com";
 
     try {
-        // 1️⃣ Cargar el XML existente
+        // Cargar el XML existente
         const response = await fetch("../data/recetario.xml");
         if (!response.ok) throw new Error("No se pudo cargar el XML");
 
@@ -176,13 +179,13 @@ async function agregarRecetaXML(valores_validos) {
             throw new Error("Error al analizar el XML");
         }
 
-        // 2️⃣ Crear el elemento <receta>
+        // Crear el elemento receta
         const receta = xmlDoc.createElementNS(NS, "receta");
         receta.setAttribute("id", valores_validos.idReceta);
         receta.setAttribute("categoria", valores_validos.categoria);
         receta.setAttribute("dificultad", valores_validos.dificultad);
 
-        // 3️⃣ Agregar <nombre> y <descripcion>
+        // Agregar nombre y descripcion
         const nombre = xmlDoc.createElementNS(NS, "nombre");
         nombre.textContent = valores_validos.nombre;
         receta.appendChild(nombre);
@@ -191,7 +194,7 @@ async function agregarRecetaXML(valores_validos) {
         descripcion.textContent = valores_validos.descripcion;
         receta.appendChild(descripcion);
 
-        // 4️⃣ Agregar <ingredientes> y <ingrediente>
+        // Agregar ingredientes y ingrediente
         const ingredientes = xmlDoc.createElementNS(NS, "ingredientes");
         valores_validos.ingredientes.forEach(p => {
             const ing = xmlDoc.createElementNS(NS, "ingrediente");
@@ -202,7 +205,7 @@ async function agregarRecetaXML(valores_validos) {
         });
         receta.appendChild(ingredientes);
 
-        // 5️⃣ Agregar <preparacion> y <paso>
+        // Agregar preparacion y paso
         const preparacion = xmlDoc.createElementNS(NS, "preparacion");
         valores_validos.pasos.forEach((p, i) => {
             const paso = xmlDoc.createElementNS(NS, "paso");
@@ -212,7 +215,7 @@ async function agregarRecetaXML(valores_validos) {
         });
         receta.appendChild(preparacion);
 
-        // 6️⃣ Agregar <tiempo>, <porciones>, <video>, <enlace> y <notas>
+        // Agregar tiempo, porciones, video, enlace y notas
         const tiempo = xmlDoc.createElementNS(NS, "tiempo");
         tiempo.setAttribute("total", valores_validos.tiempoTotal.cantidad);
         tiempo.setAttribute("unidad", valores_validos.tiempoTotal.unidad);
@@ -239,24 +242,24 @@ async function agregarRecetaXML(valores_validos) {
             notas.textContent = valores_validos.notas;
             receta.appendChild(notas);
         }
-        // 7️⃣ Agregar la receta al recetario
+        // Agregar la receta al recetario
         xmlDoc.documentElement.appendChild(receta);
 
-        // 8️⃣ Convertir a string para enviar o guardar
+        // Convertir a string para enviar o guardar
         const serializer = new XMLSerializer();
         const nuevoXMLString = serializer.serializeToString(xmlDoc);
 
         console.log(nuevoXMLString);
 
-        // 9️⃣ Enviar al servidor para guardar
+        // Enviar al servidor para guardar
         const respuesta = await fetch("../backend/guardar_recetario.php", {
             method: "POST",
             headers: { "Content-Type": "application/xml" },
             body: nuevoXMLString
         });
         const mensaje = await respuesta.text();
-
-        //  🔔 Mostrar mensaje del servidor
+        cargarXML();
+        // Mostrar mensaje del servidor
         alert(mensaje);
 
     } catch (error) {
@@ -371,7 +374,7 @@ function borrar_paso(divElemento, pasoObj) {
     });
 }
 
-// Función para limpiar el formulario por completo
+// Funcion para limpiar el formulario por completo
 function limpiar_formulario() {
     const form = document.getElementById("formReceta");
     form.reset(); 
@@ -381,5 +384,4 @@ function limpiar_formulario() {
     const pasosContainer = document.getElementById("pasosContainer");
     ingredientesContainer.innerHTML = "";
     pasosContainer.innerHTML = "";
-    cargarXML();
 }

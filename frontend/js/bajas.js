@@ -133,7 +133,8 @@ function parsearReceta(recetaXML) {
 
 // Función para mostrar la lista de recetas
 function mostrarListaRecetas() {
-    // Limpiar la lista actual (mantener solo el título)
+
+    // Limpiar la lista actual
     const items = recetasList.querySelectorAll(".receta-item");
     items.forEach(item => item.remove());
     
@@ -184,10 +185,10 @@ function buscarReceta() {
 
 // Función para mostrar vista previa
 function mostrarVistaPrevia(receta) {
+
     // Ocultar estado vacío y mostrar preview
     emptyState.style.display = "none";
     recipePreview.style.display = "block";
-    //console.log(receta);
     // Llenar datos básicos
     document.getElementById("previewNombre").textContent = receta.nombre;
     document.getElementById("previewCategoria").textContent = receta.categoria;
@@ -227,6 +228,7 @@ function mostrarVistaPrevia(receta) {
 
 // Función para limpiar vista previa
 function limpiarVistaPrevia() {
+
     emptyState.style.display = "flex";
     recipePreview.style.display = "none";
     recetaSeleccionada = null;
@@ -235,8 +237,9 @@ function limpiarVistaPrevia() {
     mensajeBusqueda.style.color = "#6c757d";
 }
 
-// Función para eliminar receta
+// Función para eliminar receta desde panel de recetas
 function eliminarReceta() {
+
     if (!recetaSeleccionada) {
         alert("No hay ninguna receta seleccionada");
         return;
@@ -266,11 +269,13 @@ function eliminarReceta() {
     }
 }
 
+// Funcion para eliminar receta desde archivo XML
 async function eliminarRecetaXML(idReceta) {
+
     const NS = "http://www.recetas.com"; // Namespace principal
 
     try {
-        // 1️⃣ Cargar el XML existente
+        // Cargar el XML existente
         const response = await fetch("../data/recetario.xml");
         if (!response.ok) throw new Error("No se pudo cargar el XML");
 
@@ -282,7 +287,7 @@ async function eliminarRecetaXML(idReceta) {
             throw new Error("Error al analizar el XML");
         }
 
-        // 2️⃣ Buscar la receta por su id y eliminarla
+        // Buscar la receta por su id y eliminarla
         const recetas = xmlDoc.getElementsByTagNameNS(NS, "receta");
         let recetaEncontrada = false;
 
@@ -299,20 +304,20 @@ async function eliminarRecetaXML(idReceta) {
             return;
         }
 
-        // 3️⃣ Reasignar IDs consecutivos r001, r002, r003...
+        // Reasignar IDs consecutivos r001, r002, r003...
         const recetasRestantes = xmlDoc.getElementsByTagNameNS(NS, "receta");
         for (let i = 0; i < recetasRestantes.length; i++) {
             const nuevoId = "r" + String(i + 1).padStart(3, "0");
             recetasRestantes[i].setAttribute("id", nuevoId);
         }
 
-        // 4️⃣ Convertir a string para enviar o guardar
+        // Convertir a string para enviar o guardar
         const serializer = new XMLSerializer();
         const nuevoXMLString = serializer.serializeToString(xmlDoc);
 
         console.log(nuevoXMLString);
 
-        // 5️⃣ Enviar al servidor para guardar los cambios
+        // Enviar al servidor para guardar los cambios
         const respuesta = await fetch("../backend/guardar_recetario.php", {
             method: "POST",
             headers: { "Content-Type": "application/xml" },
