@@ -7,7 +7,7 @@ const pasosContainer = document.getElementById("pasosContainer");
 // Funcion para cargar XML
 async function cargarXML() {
     try {
-        const response = await fetch("../data/recetario.xml");
+        const response = await fetch(`../data/recetario.xml?t=${Date.now()}`);
         if (!response.ok) throw new Error("No se pudo cargar el XML");
 
         const xmlText = await response.text();
@@ -31,10 +31,8 @@ async function cargarXML() {
             const numero = parseInt(ultimoId.substring(1)); 
             const nuevoNumero = numero + 1;
             const nuevoId = "r" + nuevoNumero.toString().padStart(3, "0");
-            // Asignar el nuevo ID al campo de texto
             document.getElementById("idReceta").value = nuevoId;
         } else {
-            // Si no hay recetas, empieza desde r001
             document.getElementById("idReceta").value = "r001";
         }
 
@@ -158,7 +156,6 @@ function validar_entradas(event) {
     document.getElementById("videoUrl").value = "";
     document.getElementById("enlaceUrl").value = "";
     document.getElementById("notas").value = "";
-    //cargarXML();
     return true;
 }
 
@@ -249,8 +246,6 @@ async function agregarRecetaXML(valores_validos) {
         const serializer = new XMLSerializer();
         const nuevoXMLString = serializer.serializeToString(xmlDoc);
 
-        console.log(nuevoXMLString);
-
         // Enviar al servidor para guardar
         const respuesta = await fetch("../backend/guardar_recetario.php", {
             method: "POST",
@@ -258,10 +253,10 @@ async function agregarRecetaXML(valores_validos) {
             body: nuevoXMLString
         });
         const mensaje = await respuesta.text();
-        cargarXML();
         // Mostrar mensaje del servidor
         alert(mensaje);
-
+        // Actualizar lista de IDs
+        await cargarXML();
     } catch (error) {
         console.error("Error agregando la receta:", error);
         alert("Ocurrió un error al agregar la receta. Revisa la consola.");
